@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  GODOT_VERSION: 4.1.1
+  GODOT_VERSION: 4.2.1
   EXPORT_NAME: ldjam55
   ITCHIO_USERNAME: chybby
   ITCHIO_GAME: ldjam55

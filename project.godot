@@ -44,7 +44,7 @@ script/templates_search_path="res://scripts/templates"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/script-tabs/plugin.cfg")
 
 [gui]
 
