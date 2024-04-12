@@ -7,9 +7,9 @@ on:
 
 env:
   GODOT_VERSION: 4.1.1
-  EXPORT_NAME: ldjam-template
+  EXPORT_NAME: ldjam55
   ITCHIO_USERNAME: chybby
-  ITCHIO_GAME: ldjam-template
+  ITCHIO_GAME: ldjam55
 
 jobs:
   build-windows:
