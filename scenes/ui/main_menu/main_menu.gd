@@ -9,6 +9,9 @@ const STARTING_GAME_TEXT = "Starting game in %d..."
 func _ready() -> void:
     button.pressed.connect(on_button_pressed)
 
+    # TODO: for now just go straight to the game.
+    get_tree().call_deferred("change_scene_to_file", "res://scenes/main/main.tscn")
+
 
 func on_button_pressed() -> void:
     label.text = STARTING_GAME_TEXT % 3
