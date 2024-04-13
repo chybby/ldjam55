@@ -1,55 +1,51 @@
-[gd_scene load_steps=10 format=3 uid="uid://dionueqr7qrkx"]
+[gd_scene load_steps=8 format=3 uid="uid://dionueqr7qrkx"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/levels/dungeon.gd" id="1_urk0f"]
 [ext_resource type="PackedScene" uid="uid://cwav8ma78d78y" path="res://scenes/game_objects/player/player.tscn" id="2_t4pnu"]
-[ext_resource type="Texture2D" uid="uid://ct77008y0av3p" path="res://assets/dungeon_floor.jpg" id="3_itgkg"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0wft0"]
-size = Vector3(30, 1, 30)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0g5yk"]
-albedo_texture = ExtResource("3_itgkg")
-uv1_scale = Vector3(15, 15, 15)
-
-[sub_resource type="BoxMesh" id="BoxMesh_3mejn"]
-material = SubResource("StandardMaterial3D_0g5yk")
-size = Vector3(30, 1, 30)
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jgev5"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_yu7e7"]
-sky_material = SubResource("ProceduralSkyMaterial_jgev5")
+[ext_resource type="PackedScene" uid="uid://cnwwqe77sy68w" path="res://assets/dungeon.blend" id="3_umc5k"]
+[ext_resource type="PackedScene" uid="uid://cmvtcc3g0xbgk" path="res://scenes/game_objects/lamp/lamp.tscn" id="4_ilufg"]
+[ext_resource type="PackedScene" uid="uid://y8bs8p8f47lu" path="res://scenes/game_objects/torch/torch.tscn" id="5_1kyur"]
+[ext_resource type="PackedScene" uid="uid://0mgktkmtad83" path="res://scenes/game_objects/ball/ball.tscn" id="6_4tgha"]
 
 [sub_resource type="Environment" id="Environment_t3h81"]
-background_mode = 2
-sky = SubResource("Sky_yu7e7")
+background_color = Color(0.823529, 0.823529, 0.823529, 1)
 tonemap_mode = 2
+ssao_enabled = true
+ssao_intensity = 2.55
+ssao_power = 3.56763
+ssil_intensity = 1.14
 glow_enabled = true
+glow_blend_mode = 4
+fog_enabled = true
+fog_light_color = Color(0.0862745, 0, 0, 1)
+fog_density = 0.1059
+volumetric_fog_albedo = Color(0.647059, 0.0627451, 0, 1)
+volumetric_fog_emission = Color(0.117647, 0, 0.0156863, 1)
 
 [node name="Dungeon" type="Node3D"]
 script = ExtResource("1_urk0f")
 player_scene = ExtResource("2_t4pnu")
 
-[node name="Floor" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
-shape = SubResource("BoxShape3D_0wft0")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-mesh = SubResource("BoxMesh_3mejn")
+[node name="Model" parent="." instance=ExtResource("3_umc5k")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_t3h81")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 7, 0)
+transform = Transform3D(0.665073, -0.243096, 0.706104, -0.189907, 0.859392, 0.474742, -0.722228, -0.449832, 0.525392, 0, 7, 0)
+light_color = Color(0.701961, 0.541176, 0.443137, 1)
+light_energy = 5.0
 shadow_enabled = true
+editor_only = true
 
 [node name="SpawnPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0564203, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.696116, 3.47427)
+
+[node name="Lamp" parent="." instance=ExtResource("4_ilufg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24301, 0.287303, -1.50791)
+
+[node name="Torch" parent="." instance=ExtResource("5_1kyur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7979, 1.66067, 0)
+
+[node name="Ball" parent="." instance=ExtResource("6_4tgha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.180161, -1)

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://y8bs8p8f47lu"]
+
+[ext_resource type="PackedScene" uid="uid://1wxnafhrkyc7" path="res://assets/torch.blend" id="1_n7tf3"]
+
+[node name="Torch" type="Node3D"]
+
+[node name="Model" parent="." instance=ExtResource("1_n7tf3")]

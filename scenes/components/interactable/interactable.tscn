@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5nstwfej32oa"]
+
+[ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="1_w6y5e"]
+
+[node name="Pickup" type="Area3D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_w6y5e")
