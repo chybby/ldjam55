@@ -29,25 +29,26 @@ player_scene = ExtResource("2_t4pnu")
 
 [node name="Model" parent="." instance=ExtResource("3_umc5k")]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="SpookyEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_t3h81")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.665073, -0.243096, 0.706104, -0.189907, 0.859392, 0.474742, -0.722228, -0.449832, 0.525392, 0, 7, 0)
-visible = false
-light_color = Color(0.701961, 0.541176, 0.443137, 1)
-light_energy = 5.0
-shadow_enabled = true
-editor_only = true
-
 [node name="SpawnPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.696116, 3.47427)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3026, 0.207253, 7.11598)
 
 [node name="Lamp" parent="." instance=ExtResource("4_ilufg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24301, 0.287303, -1.50791)
+transform = Transform3D(-0.480331, 0, -0.877088, 0, 1, 0, 0.877088, 0, -0.480331, 32.5252, 0.193281, -28.2286)
 
 [node name="Torch" parent="." instance=ExtResource("5_1kyur")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7979, 1.66067, 0)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10.45, 1.66067, 3.79385)
+starts_lit = true
+
+[node name="Torch2" parent="." instance=ExtResource("5_1kyur")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.31006, 1.66067, -25.8837)
+starts_lit = true
+
+[node name="Torch3" parent="." instance=ExtResource("5_1kyur")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.45113, 1.66067, 2.75495)
+starts_lit = true
 
 [node name="Ball" parent="." instance=ExtResource("6_4tgha")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.180161, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9093, 0.180161, -21.1372)

@@ -6,10 +6,13 @@
 [ext_resource type="Script" path="res://scenes/components/hurtbox3d/hurtbox3d.gd" id="3_5hv6m"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yjsav"]
+height = 1.8
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t3njk"]
+height = 1.8
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_305cp"]
+height = 1.8
 
 [sub_resource type="Animation" id="Animation_158g8"]
 length = 0.001
@@ -68,7 +71,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.907112, 0)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_k7pqn")
@@ -91,6 +94,7 @@ script = ExtResource("2_vxojf")
 [node name="Visuals" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals"]
+visible = false
 mesh = SubResource("CapsuleMesh_yjsav")
 
 [node name="Hurtbox3D" type="Area3D" parent="." node_paths=PackedStringArray("health")]
