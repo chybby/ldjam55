@@ -9,6 +9,7 @@
 
 [sub_resource type="Environment" id="Environment_t3h81"]
 background_color = Color(0.823529, 0.823529, 0.823529, 1)
+background_energy_multiplier = 0.05
 tonemap_mode = 2
 ssao_enabled = true
 ssao_intensity = 2.55
@@ -33,6 +34,7 @@ environment = SubResource("Environment_t3h81")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.665073, -0.243096, 0.706104, -0.189907, 0.859392, 0.474742, -0.722228, -0.449832, 0.525392, 0, 7, 0)
+visible = false
 light_color = Color(0.701961, 0.541176, 0.443137, 1)
 light_energy = 5.0
 shadow_enabled = true

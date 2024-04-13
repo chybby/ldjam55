@@ -16,7 +16,7 @@ extends CharacterBody3D
 var target_velocity := Vector3.ZERO
 var mouse_input := Vector2.ZERO
 
-var held_item : StaticBody3D = null
+var held_item : Interactable = null
 
 
 func _ready() -> void:
@@ -89,24 +89,28 @@ func handle_captured_mouse_motion(event: InputEventMouseMotion) -> void:
 
 
 func interact(interactable: Interactable) -> void:
-    print("interacted with ", interactable)
     if interactable.is_pickup:
-        var new_item = interactable.owner as StaticBody3D
-
         if held_item != null:
-            held_item.reparent(get_parent())
-            held_item.position = new_item.position
-            held_item.set_collision_layer_value(1, true)
+            held_item.owner.reparent(get_parent())
+            held_item.owner.position = interactable.owner.position
+            held_item.owner.set_collision_layer_value(1, true)
 
-        held_item = new_item
-        new_item.reparent(held_item_marker)
-        new_item.position = Vector3.ZERO
-        new_item.set_collision_layer_value(1, false)
+        held_item = interactable
+        held_item.owner.reparent(held_item_marker)
+        held_item.owner.position = Vector3.ZERO
+        held_item.owner.set_collision_layer_value(1, false)
+    else:
+        interactable.interact(held_item)
 
 
 func on_interactable_changed(interactable: Interactable) -> void:
-    # TODO: show prompt on HUD.
-    print(interactable)
+    if interactable == null:
+        pass
+    else:
+        var prompt := interactable.get_prompt(held_item)
+        if prompt != "":
+            # TODO: display on HUD.
+            print(prompt)
 
 
 func get_movement_input() -> Vector2:

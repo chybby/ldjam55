@@ -29,6 +29,7 @@ shadow_enabled = true
 
 [node name="Interactable" parent="." instance=ExtResource("2_77fgf")]
 is_pickup = true
+item_name = "Lamp"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22307, 0)
