@@ -36,7 +36,7 @@ environment = SubResource("Environment_t3h81")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3026, 0.207253, 7.11598)
 
 [node name="Lamp" parent="." instance=ExtResource("4_ilufg")]
-transform = Transform3D(-0.480331, 0, -0.877088, 0, 1, 0, 0.877088, 0, -0.480331, 32.5252, 0.193281, -28.2286)
+transform = Transform3D(-0.480331, 0, -0.877088, 0, 1, 0, 0.877088, 0, -0.480331, 33.6514, 0.193281, -24.102)
 
 [node name="Torch" parent="." instance=ExtResource("5_1kyur")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10.45, 1.66067, 3.79385)
@@ -49,6 +49,21 @@ starts_lit = true
 [node name="Torch3" parent="." instance=ExtResource("5_1kyur")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.45113, 1.66067, 2.75495)
 starts_lit = true
+
+[node name="Torch4" parent="." instance=ExtResource("5_1kyur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.561, 2.50241, -24.0779)
+
+[node name="Torch5" parent="." instance=ExtResource("5_1kyur")]
+transform = Transform3D(0.309017, 0, 0.951057, 0, 1, 0, -0.951057, 0, 0.309017, 57.2755, 2.50241, -16.1507)
+
+[node name="Torch6" parent="." instance=ExtResource("5_1kyur")]
+transform = Transform3D(-0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, -0.809017, 66.4794, 2.50241, -19.0935)
+
+[node name="Torch7" parent="." instance=ExtResource("5_1kyur")]
+transform = Transform3D(-0.809017, 0, -0.587785, 0, 1, 0, 0.587785, 0, -0.809017, 66.503, 2.50241, -28.8834)
+
+[node name="Torch8" parent="." instance=ExtResource("5_1kyur")]
+transform = Transform3D(0.309017, 0, -0.951057, 0, 1, 0, 0.951057, 0, 0.309017, 57.2209, 2.50241, -31.8877)
 
 [node name="Ball" parent="." instance=ExtResource("6_4tgha")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9093, 0.180161, -21.1372)
