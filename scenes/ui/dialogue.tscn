@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://calypvp446the"]
+
+[ext_resource type="Texture2D" uid="uid://bsbbj3fg6enwl" path="res://assets/goat.png" id="1_58iyd"]
+[ext_resource type="Script" path="res://scenes/ui/dialogue.gd" id="1_jplme"]
+[ext_resource type="Shader" path="res://scenes/ui/dialogue.gdshader" id="3_u8w5b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gcjw1"]
+shader = ExtResource("3_u8w5b")
+
+[sub_resource type="Animation" id="Animation_exmm8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/PanelContainer/HBoxContainer/SpeechText:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_7sck5"]
+resource_name = "scroll_dialog"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/PanelContainer/HBoxContainer/SpeechText:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qbkq0"]
+_data = {
+"RESET": SubResource("Animation_exmm8"),
+"scroll_dialogue": SubResource("Animation_7sck5")
+}
+
+[node name="Dialogue" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+script = ExtResource("1_jplme")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -176.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 0
+
+[node name="ProfilePicture" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_58iyd")
+stretch_mode = 2
+
+[node name="SpeechText" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_gcjw1")
+layout_mode = 2
+mouse_filter = 1
+text = "Lorem ipsum fuck yo life shit lorem ipsum"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qbkq0")
+}
