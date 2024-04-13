@@ -1,13 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://dionueqr7qrkx"]
+[gd_scene load_steps=10 format=3 uid="uid://dionueqr7qrkx"]
 
-[ext_resource type="Script" path="res://scenes/levels/dungeon.gd" id="1_urk0f"]
+[ext_resource type="Script" path="res://scenes/game_objects/levels/dungeon.gd" id="1_urk0f"]
 [ext_resource type="PackedScene" uid="uid://cwav8ma78d78y" path="res://scenes/game_objects/player/player.tscn" id="2_t4pnu"]
+[ext_resource type="Texture2D" uid="uid://ct77008y0av3p" path="res://assets/dungeon_floor.jpg" id="3_itgkg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wft0"]
 size = Vector3(30, 1, 30)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0g5yk"]
-albedo_color = Color(0.14902, 0.0235294, 0.0352941, 1)
+albedo_texture = ExtResource("3_itgkg")
+uv1_scale = Vector3(15, 15, 15)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3mejn"]
 material = SubResource("StandardMaterial3D_0g5yk")
