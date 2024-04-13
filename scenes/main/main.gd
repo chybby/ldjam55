@@ -8,7 +8,7 @@ var test_dialogue: Array[String] = [
     "It's gonna be fuckin CRAZY",
     "You're gonna summon the SHIT outta this spooky town tonight!!!",
     "glhf",
-    ]
+]
 
 func _ready() -> void:
     Input.set_use_accumulated_input(false)

@@ -41,4 +41,3 @@ script = ExtResource("3_rc64n")
 unique_name_in_owner = true
 process_mode = 3
 layout_mode = 1
-mouse_filter = 0

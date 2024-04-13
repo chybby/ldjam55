@@ -1,8 +1,36 @@
-[gd_scene load_steps=8 format=3 uid="uid://calypvp446the"]
+[gd_scene load_steps=10 format=3 uid="uid://calypvp446the"]
 
 [ext_resource type="Texture2D" uid="uid://bsbbj3fg6enwl" path="res://assets/goat.png" id="1_58iyd"]
 [ext_resource type="Script" path="res://scenes/ui/dialogue.gd" id="1_jplme"]
 [ext_resource type="Shader" path="res://scenes/ui/dialogue.gdshader" id="3_u8w5b"]
+
+[sub_resource type="Shader" id="Shader_7y6tw"]
+code = "shader_type canvas_item;
+
+uniform vec2 bob_speed;
+uniform vec2 bob_amplitude;
+uniform vec2 texture_size;
+
+void vertex() {
+    VERTEX.x += bob_amplitude.x*(texture_size.y-VERTEX.y)*sin(bob_speed.x*TIME);
+	VERTEX.y += bob_amplitude.y*(texture_size.y-VERTEX.y)*sin(bob_speed.y*TIME);
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ub15q"]
+shader = SubResource("Shader_7y6tw")
+shader_parameter/bob_speed = null
+shader_parameter/bob_amplitude = null
+shader_parameter/texture_size = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gcjw1"]
 shader = ExtResource("3_u8w5b")
@@ -84,9 +112,16 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 0
 
 [node name="ProfilePicture" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_ub15q")
 layout_mode = 2
 texture = ExtResource("1_58iyd")
 stretch_mode = 2
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"slice_section": false
+}
 
 [node name="SpeechText" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer"]
 unique_name_in_owner = true
