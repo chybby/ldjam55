@@ -269,11 +269,13 @@ libraries = {
 }
 
 [node name="JumpAudioPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 stream = ExtResource("7_hlqlx")
 script = ExtResource("7_13eax")
 jump_sounds = Array[AudioStream]([ExtResource("3_37asq"), ExtResource("4_k1bhd")])
 
 [node name="FootstepAudioPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 stream = ExtResource("7_hlqlx")
 pitch_scale = 0.96
 script = ExtResource("17_rhsy1")

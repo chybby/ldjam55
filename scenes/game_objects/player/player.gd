@@ -19,6 +19,9 @@ extends CharacterBody3D
 
 @onready var glowing_trail: GPUParticles3D = %GlowingTrail
 
+@onready var jump_audio_player: AudioStreamPlayer = %JumpAudioPlayer
+@onready var footstep_audio_player: AudioStreamPlayer = %FootstepAudioPlayer
+
 
 var ground_velocity := Vector2.ZERO
 var target_velocity := Vector3.ZERO
@@ -76,30 +79,30 @@ func _physics_process(delta: float) -> void:
         target_velocity.x = ground_velocity.x * speed
         target_velocity.z = ground_velocity.y * speed
         if is_on_floor():
-            $FootstepAudioPlayer.start_footsteps()
+            footstep_audio_player.start_footsteps()
             animation_player.play("walk_bob")
     else:
         target_velocity.x = 0
         target_velocity.z = 0
-        $FootstepAudioPlayer.stop_footsteps()
+        footstep_audio_player.stop_footsteps()
         animation_player.play("idle", 3)
 
     target_velocity = target_velocity.rotated(Vector3.UP, rotation.y)
 
     if not is_on_floor():
         target_velocity.y -= (fall_acceleration * delta)
-        $FootstepAudioPlayer.stop_footsteps()
+        footstep_audio_player.stop_footsteps()
         animation_player.play("RESET", 2)
         in_air = true
     else:
         if in_air:
             in_air = false
-            $FootstepAudioPlayer.play_footstep()
-            $FootstepAudioPlayer.stop_footsteps()
+            footstep_audio_player.play_footstep()
+            footstep_audio_player.stop_footsteps()
         target_velocity.y = 0
         if jumped:
-            
-            $JumpAudioPlayer.play_jump()
+
+            jump_audio_player.play_jump()
             target_velocity.y = jump_strength
 
     jumped = false
@@ -126,7 +129,7 @@ func handle_captured_mouse_motion(event: InputEventMouseMotion) -> void:
 func pick_up(holdable: Holdable) -> void:
     if held_item != null:
         held_item.owner.reparent(get_parent())
-        held_item.owner.position = holdable.owner.position
+        held_item.owner.global_position = holdable.owner.global_position
         held_item.owner.set_collision_layer_value(1, true)
         held_item.drop()
 
