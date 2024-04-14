@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dt43xo5h61ymm"]
+
+[ext_resource type="Script" path="res://scenes/game_objects/beings/wings/wings.gd" id="1_2jclb"]
+[ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="2_lt8h8"]
+[ext_resource type="Script" path="res://scenes/components/holdable/holdable.gd" id="3_ah1xd"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_o13lc"]
+size = Vector3(0.4, 0.4, 0.4)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2fjdu"]
+radius = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g3cm4"]
+radius = 0.2
+
+[node name="Wings" type="StaticBody3D"]
+collision_mask = 0
+script = ExtResource("1_2jclb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213436, 0)
+mesh = SubResource("PrismMesh_o13lc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213436, 0)
+shape = SubResource("SphereShape3D_2fjdu")
+
+[node name="Interactable" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("2_lt8h8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213783, 0)
+shape = SubResource("SphereShape3D_g3cm4")
+
+[node name="Holdable" type="Node" parent="."]
+script = ExtResource("3_ah1xd")

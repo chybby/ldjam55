@@ -12,7 +12,7 @@ size = Vector3(0.35, 0.45, 0.3)
 radius = 0.179256
 height = 0.473487
 
-[node name="Lamp" type="StaticBody3D"]
+[node name="Pyron" type="StaticBody3D"]
 script = ExtResource("1_i5707")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

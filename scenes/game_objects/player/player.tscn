@@ -5,13 +5,13 @@
 [ext_resource type="Script" path="res://scenes/components/health/health.gd" id="2_vxojf"]
 [ext_resource type="Script" path="res://scenes/components/hurtbox3d/hurtbox3d.gd" id="3_5hv6m"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_305cp"]
+height = 1.8
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yjsav"]
 height = 1.8
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t3njk"]
-height = 1.8
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_305cp"]
 height = 1.8
 
 [sub_resource type="Animation" id="Animation_158g8"]
@@ -19,7 +19,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
+tracks/0/path = NodePath("ScalePivot/Camera3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,7 +36,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
+tracks/0/path = NodePath("ScalePivot/Camera3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -53,7 +53,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
+tracks/0/path = NodePath("ScalePivot/Camera3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,11 +76,26 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_k7pqn")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CapsuleShape3D_305cp")
+
+[node name="ScalePivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Visuals" type="Node3D" parent="ScalePivot"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScalePivot/Visuals"]
+visible = false
+mesh = SubResource("CapsuleMesh_yjsav")
+
+[node name="Camera3D" type="Camera3D" parent="ScalePivot"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.697828, -0.31239)
 current = true
 
-[node name="InteractRay" type="RayCast3D" parent="Camera3D"]
+[node name="InteractRay" type="RayCast3D" parent="ScalePivot/Camera3D"]
+unique_name_in_owner = true
 target_position = Vector3(0, 0, -2)
 collision_mask = 8
 hit_back_faces = false
@@ -88,27 +103,20 @@ collide_with_areas = true
 collide_with_bodies = false
 script = ExtResource("2_v2lg7")
 
-[node name="Health" type="Node" parent="."]
-script = ExtResource("2_vxojf")
+[node name="HeldItemMarker" type="Marker3D" parent="ScalePivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.324, 0.112001, -0.651)
 
-[node name="Visuals" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals"]
-visible = false
-mesh = SubResource("CapsuleMesh_yjsav")
-
-[node name="Hurtbox3D" type="Area3D" parent="." node_paths=PackedStringArray("health")]
+[node name="Hurtbox3D" type="Area3D" parent="ScalePivot" node_paths=PackedStringArray("health")]
 script = ExtResource("3_5hv6m")
-health = NodePath("../Health")
+health = NodePath("../../Health")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScalePivot/Hurtbox3D"]
 shape = SubResource("CapsuleShape3D_t3njk")
 
-[node name="CollisionShape2D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_305cp")
-
-[node name="HeldItemMarker" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.324, 0.112, -0.651)
+[node name="Health" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_vxojf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

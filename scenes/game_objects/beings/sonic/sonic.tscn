@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://0mgktkmtad83"]
 
-[ext_resource type="Script" path="res://scenes/game_objects/beings/ball/ball.gd" id="1_17ovb"]
-[ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="2_42n42"]
-[ext_resource type="Script" path="res://scenes/components/holdable/holdable.gd" id="3_e55mj"]
+[ext_resource type="Script" path="res://scenes/game_objects/beings/sonic/sonic.gd" id="1_iymto"]
+[ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="2_n66sq"]
+[ext_resource type="Script" path="res://scenes/components/holdable/holdable.gd" id="3_1qexs"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_du4xi"]
 radius = 0.2
@@ -14,9 +14,9 @@ radius = 0.2
 [sub_resource type="SphereShape3D" id="SphereShape3D_g3cm4"]
 radius = 0.2
 
-[node name="Ball" type="StaticBody3D"]
+[node name="Sonic" type="StaticBody3D"]
 collision_mask = 0
-script = ExtResource("1_17ovb")
+script = ExtResource("1_iymto")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213436, 0)
@@ -29,11 +29,11 @@ shape = SubResource("SphereShape3D_2fjdu")
 [node name="Interactable" type="Area3D" parent="."]
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("2_42n42")
+script = ExtResource("2_n66sq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213783, 0)
 shape = SubResource("SphereShape3D_g3cm4")
 
 [node name="Holdable" type="Node" parent="."]
-script = ExtResource("3_e55mj")
+script = ExtResource("3_1qexs")

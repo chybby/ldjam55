@@ -1,17 +1,20 @@
 class_name Player
 extends CharacterBody3D
 
-@export_range(0.0, 100.0, 0.1, "or_greater", "suffix:m/s") var walk_speed: float = 3.0
-@export_range(0.0, 100.0, 0.1, "or_greater", "suffix:m/s") var sprint_speed: float = 6.0
+@export_range(0.0, 100.0, 0.1, "or_greater", "suffix:m/s") var walk_speed: float = 4.0
+@export_range(0.0, 100.0, 0.1, "or_greater", "suffix:m/s") var sprint_speed: float = 4.0
 @export_range(0.0, 100.0, 0.1, "or_greater", "suffix:m/s") var jump_strength: float = 5.0
 @export_range(0.0, 100.0, 0.1, "or_greater", "suffix:m/s^2") var fall_acceleration: float = 10.0
 @export_range(0.0, 100.0, 0.1, "or_greater") var mouse_sensitivity: float = 0.003
 
-@onready var health: Health = $Health
-@onready var camera: Camera3D = $Camera3D
+@onready var health: Health = %Health
+@onready var camera: Camera3D = %Camera3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var interact_ray: RayCast3D = $Camera3D/InteractRay
-@onready var held_item_marker: Marker3D = $HeldItemMarker
+@onready var interact_ray: RayCast3D = %InteractRay
+@onready var held_item_marker: Marker3D = %HeldItemMarker
+
+@onready var scale_pivot: Node3D = %ScalePivot
+@onready var collision_shape_3d: CollisionShape3D = %CollisionShape3D
 
 
 var ground_velocity := Vector2.ZERO
@@ -61,9 +64,10 @@ func _physics_process(delta: float) -> void:
     var speed := walk_speed
     animation_player.speed_scale = 1
 
-    if Input.is_action_pressed("sprint") and !ground_velocity.is_zero_approx():
-        speed = sprint_speed
-        animation_player.speed_scale = sprint_speed/walk_speed
+    # TODO: disable sprint for now
+    #if Input.is_action_pressed("sprint") and !ground_velocity.is_zero_approx():
+        #speed = sprint_speed
+        #animation_player.speed_scale = sprint_speed/walk_speed
 
     if !ground_velocity.is_zero_approx():
         target_velocity.x = ground_velocity.x * speed
@@ -83,10 +87,17 @@ func _physics_process(delta: float) -> void:
         target_velocity.y = 0
         if jumped:
             target_velocity.y = jump_strength
-            jumped = false
+
+    jumped = false
 
     velocity = target_velocity
     move_and_slide()
+
+
+func set_player_scale(scale: float) -> void:
+    var scale_vector = Vector3.ONE * scale
+    scale_pivot.scale = scale_vector
+    collision_shape_3d.scale = scale_vector
 
 
 func handle_captured_mouse_motion(event: InputEventMouseMotion) -> void:

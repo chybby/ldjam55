@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwj818li3lopx"]
+
+[ext_resource type="Script" path="res://scenes/game_objects/beings/nano/nano.gd" id="1_fse7i"]
+[ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="2_5al7x"]
+[ext_resource type="Script" path="res://scenes/components/holdable/holdable.gd" id="3_68ql8"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_tpsdg"]
+inner_radius = 0.081
+outer_radius = 0.196
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2fjdu"]
+radius = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g3cm4"]
+radius = 0.2
+
+[node name="Nano" type="StaticBody3D"]
+collision_mask = 0
+script = ExtResource("1_fse7i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0617142, 0)
+mesh = SubResource("TorusMesh_tpsdg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213436, 0)
+shape = SubResource("SphereShape3D_2fjdu")
+
+[node name="Interactable" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("2_5al7x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213783, 0)
+shape = SubResource("SphereShape3D_g3cm4")
+
+[node name="Holdable" type="Node" parent="."]
+script = ExtResource("3_68ql8")
