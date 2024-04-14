@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjutl3fo7aow2"]
+
+[ext_resource type="Script" path="res://scenes/game_objects/beings/wisp/wisp.gd" id="1_bufnr"]
+[ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="2_c3ygl"]
+[ext_resource type="Script" path="res://scenes/components/holdable/holdable.gd" id="3_mome4"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8vyft"]
+top_radius = 0.11
+bottom_radius = 0.2
+height = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2fjdu"]
+radius = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g3cm4"]
+radius = 0.2
+
+[node name="Wisp" type="StaticBody3D"]
+collision_mask = 0
+script = ExtResource("1_bufnr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.207763, 0)
+mesh = SubResource("CylinderMesh_8vyft")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213436, 0)
+shape = SubResource("SphereShape3D_2fjdu")
+
+[node name="Interactable" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("2_c3ygl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213783, 0)
+shape = SubResource("SphereShape3D_g3cm4")
+
+[node name="Holdable" type="Node" parent="."]
+script = ExtResource("3_mome4")

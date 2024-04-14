@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dionueqr7qrkx"]
+[gd_scene load_steps=11 format=3 uid="uid://dionueqr7qrkx"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/levels/dungeon.gd" id="1_urk0f"]
 [ext_resource type="PackedScene" uid="uid://cwav8ma78d78y" path="res://scenes/game_objects/player/player.tscn" id="2_t4pnu"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://0mgktkmtad83" path="res://scenes/game_objects/beings/sonic/sonic.tscn" id="6_wl3h7"]
 [ext_resource type="PackedScene" uid="uid://dt43xo5h61ymm" path="res://scenes/game_objects/beings/wings/wings.tscn" id="7_ew4e8"]
 [ext_resource type="PackedScene" uid="uid://cwj818li3lopx" path="res://scenes/game_objects/beings/nano/nano.tscn" id="8_im0wl"]
+[ext_resource type="PackedScene" uid="uid://bjutl3fo7aow2" path="res://scenes/game_objects/beings/wisp/wisp.tscn" id="9_gg1ej"]
 
 [sub_resource type="Environment" id="Environment_t3h81"]
 background_color = Color(0.823529, 0.823529, 0.823529, 1)
@@ -78,3 +79,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0.191586, -22)
 
 [node name="Nano" parent="." instance=ExtResource("8_im0wl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.424, 0.201479, -27)
+
+[node name="Wisp" parent="." instance=ExtResource("9_gg1ej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.651, 0.20108, -25.5058)

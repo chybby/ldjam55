@@ -1,6 +1,5 @@
 extends StaticBody3D
 
-
 @onready var interactable: Interactable = $Interactable
 @onready var holdable: Holdable = $Holdable
 
@@ -8,6 +7,8 @@ extends StaticBody3D
 func _ready() -> void:
     interactable.was_interacted_with.connect(on_interact)
     interactable.was_pondered_while_holding.connect(on_ponder)
+    holdable.was_picked_up.connect(on_pick_up)
+    holdable.was_dropped.connect(on_drop)
 
 
 func on_ponder(held_item: Holdable) -> void:
@@ -19,3 +20,10 @@ func on_ponder(held_item: Holdable) -> void:
 
 func on_interact(held_item: Holdable) -> void:
     holdable.pick_up()
+
+
+func on_pick_up(player: Player) -> void:
+    player.enable_glow_trail(true)
+
+func on_drop(player: Player) -> void:
+    player.enable_glow_trail(false)

@@ -1,15 +1,54 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwav8ma78d78y"]
+[gd_scene load_steps=23 format=3 uid="uid://cwav8ma78d78y"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/player/player.gd" id="1_k7pqn"]
 [ext_resource type="Script" path="res://scenes/game_objects/player/interact_ray.gd" id="2_v2lg7"]
 [ext_resource type="Script" path="res://scenes/components/health/health.gd" id="2_vxojf"]
 [ext_resource type="Script" path="res://scenes/components/hurtbox3d/hurtbox3d.gd" id="3_5hv6m"]
+[ext_resource type="Shader" path="res://scenes/game_objects/torch/torch.gdshader" id="3_qgpys"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_305cp"]
 height = 1.8
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yjsav"]
 height = 1.8
+
+[sub_resource type="Gradient" id="Gradient_dgb2m"]
+offsets = PackedFloat32Array(0, 0.352041, 1)
+colors = PackedColorArray(0.845308, 0.0825265, 0, 1, 0, 0.474163, 0.567043, 1, 0.00631687, 0.233046, 0.970969, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o6c7v"]
+gradient = SubResource("Gradient_dgb2m")
+
+[sub_resource type="Curve" id="Curve_n534j"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0267857, 1), 0.0, 0.0, 0, 0, Vector2(0.84375, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_kiyxq"]
+curve = SubResource("Curve_n534j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5rtkx"]
+emission_shape_scale = Vector3(0.1, 0.1, 0.1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+initial_velocity_max = 0.1
+gravity = Vector3(0, 0, 0)
+damping_min = 0.01
+damping_max = 0.01
+scale_min = 0.1
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_kiyxq")
+color_initial_ramp = SubResource("GradientTexture1D_o6c7v")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4s1xm"]
+render_priority = 0
+shader = ExtResource("3_qgpys")
+
+[sub_resource type="SphereMesh" id="SphereMesh_frrol"]
+material = SubResource("ShaderMaterial_4s1xm")
+radius = 0.02
+height = 0.04
+radial_segments = 16
+rings = 16
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t3njk"]
 height = 1.8
@@ -70,6 +109,86 @@ _data = {
 "walk_bob": SubResource("Animation_2j7ko")
 }
 
+[sub_resource type="Animation" id="Animation_h004k"]
+resource_name = "move"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -6.36807, -0.25, 0, 0.25, 0, 8.31844, -0.25, 0, 0.25, 0, -0.0995498, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4.7, 8, 10)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 5.05118, -0.25, 0, 0.25, 0, -4.78296, -0.25, 0, 0.25, 0, -0.0995498, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3, 7.2, 10)
+}
+
+[sub_resource type="Animation" id="Animation_i6qgj"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.907112, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ykga"]
+_data = {
+"RESET": SubResource("Animation_i6qgj"),
+"move": SubResource("Animation_h004k")
+}
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.907112, 0)
 collision_layer = 2
@@ -107,6 +226,17 @@ script = ExtResource("2_v2lg7")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.324, 0.112001, -0.651)
 
+[node name="GlowingTrail" type="GPUParticles3D" parent="ScalePivot/HeldItemMarker"]
+unique_name_in_owner = true
+cast_shadow = 0
+emitting = false
+amount = 10000
+lifetime = 40.0
+fixed_fps = 10
+draw_order = 1
+process_material = SubResource("ParticleProcessMaterial_5rtkx")
+draw_pass_1 = SubResource("SphereMesh_frrol")
+
 [node name="Hurtbox3D" type="Area3D" parent="ScalePivot" node_paths=PackedStringArray("health")]
 script = ExtResource("3_5hv6m")
 health = NodePath("../../Health")
@@ -121,4 +251,9 @@ script = ExtResource("2_vxojf")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_dc6dj")
+}
+
+[node name="DebugMovement" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7ykga")
 }

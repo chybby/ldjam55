@@ -16,6 +16,8 @@ extends CharacterBody3D
 @onready var scale_pivot: Node3D = %ScalePivot
 @onready var collision_shape_3d: CollisionShape3D = %CollisionShape3D
 
+@onready var glowing_trail: GPUParticles3D = %GlowingTrail
+
 
 var ground_velocity := Vector2.ZERO
 var target_velocity := Vector3.ZERO
@@ -94,10 +96,14 @@ func _physics_process(delta: float) -> void:
     move_and_slide()
 
 
-func set_player_scale(scale: float) -> void:
-    var scale_vector = Vector3.ONE * scale
+func set_player_scale(factor: float) -> void:
+    var scale_vector = Vector3.ONE * factor
     scale_pivot.scale = scale_vector
     collision_shape_3d.scale = scale_vector
+
+
+func enable_glow_trail(enabled: bool) -> void:
+    glowing_trail.emitting = enabled
 
 
 func handle_captured_mouse_motion(event: InputEventMouseMotion) -> void:
