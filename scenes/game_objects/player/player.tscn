@@ -1,10 +1,19 @@
-[gd_scene load_steps=23 format=3 uid="uid://cwav8ma78d78y"]
+[gd_scene load_steps=32 format=3 uid="uid://cwav8ma78d78y"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/player/player.gd" id="1_k7pqn"]
 [ext_resource type="Script" path="res://scenes/game_objects/player/interact_ray.gd" id="2_v2lg7"]
 [ext_resource type="Script" path="res://scenes/components/health/health.gd" id="2_vxojf"]
 [ext_resource type="Script" path="res://scenes/components/hurtbox3d/hurtbox3d.gd" id="3_5hv6m"]
+[ext_resource type="AudioStream" uid="uid://d1q1ojef2d5eb" path="res://assets/sounds/footstep2.mp3" id="3_37asq"]
 [ext_resource type="Shader" path="res://scenes/game_objects/torch/torch.gdshader" id="3_qgpys"]
+[ext_resource type="AudioStream" uid="uid://cyem52duh3y24" path="res://assets/sounds/footstep3.mp3" id="4_k1bhd"]
+[ext_resource type="Script" path="res://scenes/game_objects/player/jump_audio_player.gd" id="7_13eax"]
+[ext_resource type="AudioStream" uid="uid://dkk10u15o1n4d" path="res://assets/sounds/footstep6.mp3" id="7_hlqlx"]
+[ext_resource type="AudioStream" uid="uid://fl5wdppkk40h" path="res://assets/sounds/footstep8.mp3" id="9_1nla3"]
+[ext_resource type="AudioStream" uid="uid://ccg0ca863actq" path="res://assets/sounds/footstep9.mp3" id="10_jt2f5"]
+[ext_resource type="AudioStream" uid="uid://cfj3tovqn2plb" path="res://assets/sounds/footstep10.mp3" id="11_r44mu"]
+[ext_resource type="AudioStream" uid="uid://p3x718koot6u" path="res://assets/sounds/footstep11.mp3" id="12_rd5ly"]
+[ext_resource type="Script" path="res://scenes/game_objects/player/audio_stream_player.gd" id="17_rhsy1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_305cp"]
 height = 1.8
@@ -68,23 +77,6 @@ tracks/0/keys = {
 "values": [Vector3(0, 0.697828, -0.31239)]
 }
 
-[sub_resource type="Animation" id="Animation_2j7ko"]
-resource_name = "walk_bob"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ScalePivot/Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.8),
-"transitions": PackedFloat32Array(0.5, -0.5, 1),
-"update": 0,
-"values": [Vector3(0, 0.697828, -0.31239), Vector3(0, 0.853589, -0.31239), Vector3(0, 0.697828, -0.31239)]
-}
-
 [sub_resource type="Animation" id="Animation_dgfii"]
 resource_name = "idle"
 length = 3.0
@@ -102,11 +94,64 @@ tracks/0/keys = {
 "values": [Vector3(0, 0.697828, -0.31239), Vector3(0, 0.729, -0.312), Vector3(0, 0.697828, -0.31239)]
 }
 
+[sub_resource type="Animation" id="Animation_2j7ko"]
+resource_name = "walk_bob"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScalePivot/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(0.5, -0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0.697828, -0.31239), Vector3(0, 0.853589, -0.31239), Vector3(0, 0.697828, -0.31239)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dc6dj"]
 _data = {
 "RESET": SubResource("Animation_158g8"),
 "idle": SubResource("Animation_dgfii"),
 "walk_bob": SubResource("Animation_2j7ko")
+}
+
+[sub_resource type="Animation" id="Animation_i6qgj"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.907112, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_h004k"]
@@ -145,42 +190,6 @@ tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 5.05118, -0.25, 0, 0.25, 0, -4.78296, -0.25, 0, 0.25, 0, -0.0995498, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 3, 7.2, 10)
-}
-
-[sub_resource type="Animation" id="Animation_i6qgj"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.907112, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7ykga"]
@@ -257,3 +266,18 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_7ykga")
 }
+
+[node name="JumpAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_hlqlx")
+script = ExtResource("7_13eax")
+jump_sounds = Array[AudioStream]([ExtResource("3_37asq"), ExtResource("4_k1bhd")])
+
+[node name="FootstepAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_hlqlx")
+pitch_scale = 0.96
+script = ExtResource("17_rhsy1")
+footstep_sounds = Array[AudioStream]([ExtResource("9_1nla3"), ExtResource("10_jt2f5"), ExtResource("11_r44mu"), ExtResource("12_rd5ly")])
+
+[node name="Timer" type="Timer" parent="FootstepAudioPlayer"]
+wait_time = 0.25
+one_shot = true

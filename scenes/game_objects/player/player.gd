@@ -7,6 +7,7 @@ extends CharacterBody3D
 @export_range(0.0, 100.0, 0.1, "or_greater", "suffix:m/s^2") var fall_acceleration: float = 10.0
 @export_range(0.0, 100.0, 0.1, "or_greater") var mouse_sensitivity: float = 0.003
 
+
 @onready var health: Health = %Health
 @onready var camera: Camera3D = %Camera3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -23,6 +24,7 @@ var ground_velocity := Vector2.ZERO
 var target_velocity := Vector3.ZERO
 var mouse_input := Vector2.ZERO
 var jumped := false
+var in_air := false
 
 var held_item : Holdable = null
 
@@ -50,7 +52,6 @@ func _unhandled_input(event: InputEvent) -> void:
             if event.button_index == 1:
                 Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-
 func _physics_process(delta: float) -> void:
     # Looking around.
     rotate_object_local(Vector3.DOWN, mouse_input.x * mouse_sensitivity)
@@ -74,20 +75,31 @@ func _physics_process(delta: float) -> void:
     if !ground_velocity.is_zero_approx():
         target_velocity.x = ground_velocity.x * speed
         target_velocity.z = ground_velocity.y * speed
-        animation_player.play("walk_bob")
+        if is_on_floor():
+            $FootstepAudioPlayer.start_footsteps()
+            animation_player.play("walk_bob")
     else:
         target_velocity.x = 0
         target_velocity.z = 0
+        $FootstepAudioPlayer.stop_footsteps()
         animation_player.play("idle", 3)
 
     target_velocity = target_velocity.rotated(Vector3.UP, rotation.y)
 
     if not is_on_floor():
         target_velocity.y -= (fall_acceleration * delta)
+        $FootstepAudioPlayer.stop_footsteps()
         animation_player.play("RESET", 2)
+        in_air = true
     else:
+        if in_air:
+            in_air = false
+            $FootstepAudioPlayer.play_footstep()
+            $FootstepAudioPlayer.stop_footsteps()
         target_velocity.y = 0
         if jumped:
+            
+            $JumpAudioPlayer.play_jump()
             target_velocity.y = jump_strength
 
     jumped = false
