@@ -16,7 +16,7 @@ func _ready() -> void:
 func on_ponder(held_item: Holdable) -> void:
     if held_item == null:
         GameEvents.emit_update_prompt("Pick up " + name)
-    elif held_item != self:
+    elif held_item != holdable:
         GameEvents.emit_update_prompt("Swap %s with %s" % [held_item.owner.name, name])
 
 

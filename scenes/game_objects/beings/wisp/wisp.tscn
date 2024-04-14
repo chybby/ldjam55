@@ -38,3 +38,11 @@ shape = SubResource("SphereShape3D_g3cm4")
 
 [node name="Holdable" type="Node" parent="."]
 script = ExtResource("3_mome4")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.179755, 0)
+light_color = Color(0, 0.796078, 0.847059, 1)
+light_energy = 1.5
+shadow_enabled = true
+omni_range = 4.0
+omni_attenuation = 1.27455

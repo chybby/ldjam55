@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1t0jfr15uble"]
+
+[ext_resource type="PackedScene" uid="uid://dtvwfrlyr3hns" path="res://assets/altar.blend" id="1_vc38n"]
+[ext_resource type="Script" path="res://scenes/game_objects/altar/altar.gd" id="1_xwqxa"]
+[ext_resource type="PackedScene" uid="uid://cfc6uqgo38ka4" path="res://assets/book.blend" id="2_jf3qx"]
+[ext_resource type="PackedScene" uid="uid://ug7cgai6nxv0" path="res://assets/bowl.blend" id="3_1jtgy"]
+[ext_resource type="PackedScene" uid="uid://lwctoxfgqxdd" path="res://scenes/game_objects/candle/candle.tscn" id="4_xh216"]
+[ext_resource type="PackedScene" uid="uid://c5nstwfej32oa" path="res://scenes/components/interactable/interactable.tscn" id="5_ggy7s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t5wds"]
+size = Vector3(0.558289, 0.0605621, 0.510986)
+
+[node name="Altar" type="Node3D"]
+script = ExtResource("1_xwqxa")
+
+[node name="Visuals" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Model" parent="Visuals" instance=ExtResource("1_vc38n")]
+
+[node name="Book" parent="Visuals" instance=ExtResource("2_jf3qx")]
+transform = Transform3D(0.148387, 0, -0.477474, 0, 0.5, 0, 0.477474, 0, 0.148387, -1.55818, 2.01679, 0.504116)
+
+[node name="Bowl" parent="Visuals" instance=ExtResource("3_1jtgy")]
+transform = Transform3D(0.343108, 0, -0.205614, 0, 0.4, 0, 0.205614, 0, 0.343108, 1.611, 2.00871, -0.584515)
+
+[node name="Candle" parent="Visuals" instance=ExtResource("4_xh216")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.84344, 2.00894, -0.567043)
+
+[node name="Candle3" parent="Visuals" instance=ExtResource("4_xh216")]
+transform = Transform3D(4.34476, 0, 0, 0, 1.9364, 0, 0, 0, 4.34476, -1.52645, 2.00894, -0.632924)
+
+[node name="Candle2" parent="Visuals" instance=ExtResource("4_xh216")]
+transform = Transform3D(2.33902, 0, 0, 0, 4.17102, 0, 0, 0, 2.33902, -1.6842, 2.00894, -0.80533)
+
+[node name="Interactable" parent="." instance=ExtResource("5_ggy7s")]
+unique_name_in_owner = true
+transform = Transform3D(0.954376, 0, 0.298608, 0, 1, 0, -0.298608, 0, 0.954376, -0.776423, 1.01018, 0.259726)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000457883, 0.025795, -0.0176999)
+shape = SubResource("BoxShape3D_t5wds")
+
+[node name="BeingMarker" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01188, 0)

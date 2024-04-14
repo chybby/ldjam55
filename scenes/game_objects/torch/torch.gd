@@ -23,7 +23,7 @@ func light_torch() -> void:
 
 
 func on_ponder(held_item: Holdable) -> void:
-    if not lit and held_item != null and held_item.owner.name == "Lamp":
+    if not lit and held_item != null and held_item.owner.name == "Pyron":
         GameEvents.emit_update_prompt("Light Torch using %s" % [held_item.owner.name])
         return
 
@@ -31,5 +31,5 @@ func on_ponder(held_item: Holdable) -> void:
 
 
 func on_interact(held_item: Holdable) -> void:
-    if not lit and held_item.owner.name == "Lamp":
+    if not lit and held_item.owner.name == "Pyron":
         light_torch()

@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://lwctoxfgqxdd"]
+
+[ext_resource type="PackedScene" uid="uid://s8i28kmgwats" path="res://assets/candle.blend" id="1_48wlp"]
+[ext_resource type="Shader" path="res://scenes/game_objects/torch/torch.gdshader" id="2_lpnse"]
+
+[sub_resource type="Gradient" id="Gradient_ns7io"]
+offsets = PackedFloat32Array(0.233962, 0.532075)
+colors = PackedColorArray(0.403605, 0, 0.00915218, 1, 0.651988, 0.50221, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kw5t8"]
+gradient = SubResource("Gradient_ns7io")
+
+[sub_resource type="Curve" id="Curve_ro8tv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.296928, 0.264828), 0.0, 0.0, 0, 0, Vector2(0.354949, 0.130345), 0.0, 0.0, 0, 0, Vector2(1, 0.435172), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_kadjx"]
+curve_y = SubResource("Curve_ro8tv")
+
+[sub_resource type="Curve" id="Curve_iqbtr"]
+_data = [Vector2(0, 0.166207), 0.0, 1.43658, 0, 0, Vector2(0.0546075, 0.309655), -0.571064, -0.571064, 0, 0, Vector2(0.409556, 0.0855173), -0.371192, -0.371192, 0, 0, Vector2(0.805461, 0), -0.0218453, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_pittq"]
+curve = SubResource("Curve_iqbtr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m0chg"]
+particle_flag_rotate_y = true
+emission_shape_scale = Vector3(0.05, 0.05, 0.05)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_max = 360.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+directional_velocity_min = 0.8
+directional_velocity_max = 1.3
+directional_velocity_curve = SubResource("CurveXYZTexture_kadjx")
+orbit_velocity_min = 1.0
+orbit_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_pittq")
+color_ramp = SubResource("GradientTexture1D_kw5t8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j7q0e"]
+render_priority = 0
+shader = ExtResource("2_lpnse")
+
+[sub_resource type="BoxMesh" id="BoxMesh_3vqkp"]
+material = SubResource("ShaderMaterial_j7q0e")
+size = Vector3(0.05, 0.05, 0.05)
+
+[node name="Candle" type="Node3D"]
+
+[node name="Model" parent="." instance=ExtResource("1_48wlp")]
+
+[node name="FireParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.09872, 0)
+cast_shadow = 0
+amount = 30
+lifetime = 6.0
+preprocess = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_m0chg")
+draw_pass_1 = SubResource("BoxMesh_3vqkp")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.106818, 0)
+light_color = Color(1, 0.439216, 0.309804, 1)
+light_energy = 0.887
+light_size = 0.09
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 3.731

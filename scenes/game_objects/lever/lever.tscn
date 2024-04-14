@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://fsi78ui2tshi"]
+
+[ext_resource type="PackedScene" uid="uid://bi6cdd3p6arqx" path="res://assets/lever.blend" id="1_7015y"]
+[ext_resource type="Script" path="res://scenes/game_objects/lever/lever.gd" id="2_w2p6u"]
+[ext_resource type="PackedScene" uid="uid://c5nstwfej32oa" path="res://scenes/components/interactable/interactable.tscn" id="3_t7ilm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qyr70"]
+size = Vector3(0.537354, 0.338379, 0.202393)
+
+[node name="Lever" instance=ExtResource("1_7015y")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("2_w2p6u")
+
+[node name="Lever" parent="." index="1"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Interactable" parent="." index="3" instance=ExtResource("3_t7ilm")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0699463, 0.169189, 0.00012207)
+shape = SubResource("BoxShape3D_qyr70")

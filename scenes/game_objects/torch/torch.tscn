@@ -13,21 +13,21 @@ radius = 0.07
 offsets = PackedFloat32Array(0.233962, 0.532075)
 colors = PackedColorArray(0.403605, 0, 0.00915218, 1, 0.651988, 0.50221, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_xkigx"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wqiqh"]
 gradient = SubResource("Gradient_pi1da")
 
 [sub_resource type="Curve" id="Curve_ifb0l"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.296928, 0.264828), 0.0, 0.0, 0, 0, Vector2(0.354949, 0.130345), 0.0, 0.0, 0, 0, Vector2(1, 0.435172), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_cxh62"]
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_dqccp"]
 curve_y = SubResource("Curve_ifb0l")
 
 [sub_resource type="Curve" id="Curve_rkk8d"]
 _data = [Vector2(0, 0.166207), 0.0, 1.43658, 0, 0, Vector2(0.0546075, 0.309655), -0.571064, -0.571064, 0, 0, Vector2(0.409556, 0.0855173), -0.371192, -0.371192, 0, 0, Vector2(0.805461, 0), -0.0218453, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_hgrn7"]
+[sub_resource type="CurveTexture" id="CurveTexture_on0n1"]
 curve = SubResource("Curve_rkk8d")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h37pr"]
@@ -40,21 +40,21 @@ angular_velocity_min = -100.0
 angular_velocity_max = 100.0
 directional_velocity_min = 0.8
 directional_velocity_max = 1.3
-directional_velocity_curve = SubResource("CurveXYZTexture_cxh62")
+directional_velocity_curve = SubResource("CurveXYZTexture_dqccp")
 orbit_velocity_min = 1.0
 orbit_velocity_max = 1.0
 gravity = Vector3(0, 0, 0)
 scale_min = 4.0
 scale_max = 8.0
-scale_curve = SubResource("CurveTexture_hgrn7")
-color_ramp = SubResource("GradientTexture1D_xkigx")
+scale_curve = SubResource("CurveTexture_on0n1")
+color_ramp = SubResource("GradientTexture1D_wqiqh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k542v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jk4fj"]
 render_priority = 0
 shader = ExtResource("4_vp7le")
 
 [sub_resource type="BoxMesh" id="BoxMesh_sofpu"]
-material = SubResource("ShaderMaterial_k542v")
+material = SubResource("ShaderMaterial_jk4fj")
 size = Vector3(0.05, 0.05, 0.05)
 
 [node name="Torch" type="Node3D"]
@@ -69,11 +69,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0883341, 0.394116, 0)
 shape = SubResource("CylinderShape3D_vhgh2")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.178603, 0.706165, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.204011, 0.706165, 0)
 visible = false
 light_color = Color(1, 0.466667, 0.215686, 1)
 light_energy = 5.0
-light_size = 0.151
+light_size = 0.05
 light_bake_mode = 1
 shadow_enabled = true
 omni_attenuation = 1.46407

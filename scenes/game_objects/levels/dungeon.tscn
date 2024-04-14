@@ -1,14 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://dionueqr7qrkx"]
+[gd_scene load_steps=14 format=3 uid="uid://dionueqr7qrkx"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/levels/dungeon.gd" id="1_urk0f"]
 [ext_resource type="PackedScene" uid="uid://cwav8ma78d78y" path="res://scenes/game_objects/player/player.tscn" id="2_t4pnu"]
 [ext_resource type="PackedScene" uid="uid://cnwwqe77sy68w" path="res://assets/dungeon.blend" id="3_umc5k"]
-[ext_resource type="PackedScene" uid="uid://cmvtcc3g0xbgk" path="res://scenes/game_objects/beings/lamp/lamp.tscn" id="4_r8vk4"]
+[ext_resource type="PackedScene" uid="uid://cmvtcc3g0xbgk" path="res://scenes/game_objects/beings/pyron/pyron.tscn" id="4_l3gmt"]
 [ext_resource type="PackedScene" uid="uid://y8bs8p8f47lu" path="res://scenes/game_objects/torch/torch.tscn" id="5_1kyur"]
 [ext_resource type="PackedScene" uid="uid://0mgktkmtad83" path="res://scenes/game_objects/beings/sonic/sonic.tscn" id="6_wl3h7"]
 [ext_resource type="PackedScene" uid="uid://dt43xo5h61ymm" path="res://scenes/game_objects/beings/wings/wings.tscn" id="7_ew4e8"]
 [ext_resource type="PackedScene" uid="uid://cwj818li3lopx" path="res://scenes/game_objects/beings/nano/nano.tscn" id="8_im0wl"]
 [ext_resource type="PackedScene" uid="uid://bjutl3fo7aow2" path="res://scenes/game_objects/beings/wisp/wisp.tscn" id="9_gg1ej"]
+[ext_resource type="PackedScene" uid="uid://c1t0jfr15uble" path="res://scenes/game_objects/altar/altar.tscn" id="10_nrln7"]
+[ext_resource type="PackedScene" uid="uid://ce8iwsmlv468s" path="res://scenes/game_objects/gate/gate.tscn" id="11_omfjb"]
+[ext_resource type="PackedScene" uid="uid://fsi78ui2tshi" path="res://scenes/game_objects/lever/lever.tscn" id="12_fg6xi"]
 
 [sub_resource type="Environment" id="Environment_t3h81"]
 background_color = Color(0.823529, 0.823529, 0.823529, 1)
@@ -17,14 +20,17 @@ tonemap_mode = 2
 ssao_enabled = true
 ssao_intensity = 2.55
 ssao_power = 3.56763
-ssil_intensity = 1.14
+ssil_intensity = 2.0
 glow_enabled = true
 glow_blend_mode = 4
+glow_hdr_scale = 0.0
 fog_enabled = true
 fog_light_color = Color(0.0862745, 0, 0, 1)
-fog_density = 0.1059
-volumetric_fog_albedo = Color(0.647059, 0.0627451, 0, 1)
-volumetric_fog_emission = Color(0.117647, 0, 0.0156863, 1)
+fog_light_energy = 1.58
+fog_density = 0.1131
+volumetric_fog_density = 0.1007
+volumetric_fog_albedo = Color(0.796078, 0.345098, 0.290196, 1)
+volumetric_fog_emission = Color(0.14902, 0, 0.0235294, 1)
 
 [node name="Dungeon" type="Node3D"]
 script = ExtResource("1_urk0f")
@@ -32,46 +38,96 @@ player_scene = ExtResource("2_t4pnu")
 
 [node name="Model" parent="." instance=ExtResource("3_umc5k")]
 
+[node name="Torches" type="Node3D" parent="."]
+
+[node name="Torch" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -11.7493, 1.66067, 3.79385)
+starts_lit = true
+
+[node name="Torch2" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.9435, 1.66067, -25.8837)
+starts_lit = true
+
+[node name="Torch9" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.6512, 1.66067, -30.9354)
+starts_lit = true
+
+[node name="Torch12" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.7536, 1.66067, -22.1132)
+
+[node name="Torch17" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.088, 1.66067, -26.7334)
+
+[node name="Torch19" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(0.326212, 0, 0.945297, 0, 1, 0, -0.945297, 0, 0.326212, 47.9798, 1.66067, 3.34954)
+
+[node name="Torch20" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-0.77363, 0, 0.633637, 0, 1, 0, -0.633637, 0, -0.77363, 82.0521, 1.66067, -4.16447)
+
+[node name="Torch14" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-0.309017, 0, 0.951056, 0, 1, 0, -0.951056, 0, -0.309017, 24.2805, 1.66067, -61.1625)
+starts_lit = true
+
+[node name="Torch16" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-0.997181, 0, 0.0750308, 0, 1, 0, -0.0750308, 0, -0.997181, 27.6785, 1.66067, -31.4249)
+starts_lit = true
+
+[node name="Torch15" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(0.309017, 0, -0.951056, 0, 1, 0, 0.951056, 0, 0.309017, 19.844, 1.66067, -73.5278)
+starts_lit = true
+
+[node name="Torch10" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.6512, 1.66067, -17.1209)
+starts_lit = true
+
+[node name="Torch3" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.753, 1.66067, 2.75495)
+starts_lit = true
+
+[node name="Torch4" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.561, 2.50241, -24.0779)
+
+[node name="Torch5" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(0.309017, 0, 0.951057, 0, 1, 0, -0.951057, 0, 0.309017, 57.2755, 2.50241, -16.1507)
+
+[node name="Torch6" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, -0.809017, 66.4794, 2.50241, -19.0935)
+
+[node name="Torch7" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-0.809017, 0, -0.587785, 0, 1, 0, 0.587785, 0, -0.809017, 66.503, 2.50241, -28.8834)
+
+[node name="Torch8" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(0.309017, 0, -0.951057, 0, 1, 0, 0.951057, 0, 0.309017, 57.2209, 2.50241, -31.8877)
+
+[node name="Torch11" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(0.356917, 0, -0.934136, 0, 1, 0, 0.934136, 0, 0.356917, 48.423, 1.661, -51.603)
+
+[node name="Torch18" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-0.788301, 0, -0.61529, 0, 1, 0, 0.61529, 0, -0.788301, 82.4618, 1.661, -43.4103)
+
+[node name="Torch13" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(0.324049, 0, -0.94604, 0, 1, 0, 0.94604, 0, 0.324049, 47.6178, 1.661, -57.5537)
+
+[node name="Altars" type="Node3D" parent="."]
+
+[node name="PyronAltar" parent="Altars" instance=ExtResource("10_nrln7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.6298, 0.207041, -24.0177)
+being_scene = ExtResource("4_l3gmt")
+
+[node name="NanoAltar" parent="Altars" instance=ExtResource("10_nrln7")]
+transform = Transform3D(-0.309017, 0, 0.951056, 0, 1, 0, -0.951056, 0, -0.309017, 20.4812, 0.199961, -66.7896)
+being_scene = ExtResource("8_im0wl")
+
 [node name="SpookyEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_t3h81")
 
 [node name="SpawnPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3026, 0.207253, 7.11598)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.2507, 0.207253, 7.11598)
 
 [node name="DebugSpawn" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.2637, 0.230006, -23.9095)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2637, 0.230006, -23.9095)
 
-[node name="Lamp" parent="." instance=ExtResource("4_r8vk4")]
-transform = Transform3D(-0.480331, 0, -0.877088, 0, 1, 0, 0.877088, 0, -0.480331, 33.6514, 0.193281, -24.102)
-
-[node name="Torch" parent="." instance=ExtResource("5_1kyur")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10.45, 1.66067, 3.79385)
-starts_lit = true
-
-[node name="Torch2" parent="." instance=ExtResource("5_1kyur")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.31006, 1.66067, -25.8837)
-starts_lit = true
-
-[node name="Torch3" parent="." instance=ExtResource("5_1kyur")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.45113, 1.66067, 2.75495)
-starts_lit = true
-
-[node name="Torch4" parent="." instance=ExtResource("5_1kyur")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.561, 2.50241, -24.0779)
-
-[node name="Torch5" parent="." instance=ExtResource("5_1kyur")]
-transform = Transform3D(0.309017, 0, 0.951057, 0, 1, 0, -0.951057, 0, 0.309017, 57.2755, 2.50241, -16.1507)
-
-[node name="Torch6" parent="." instance=ExtResource("5_1kyur")]
-transform = Transform3D(-0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, -0.809017, 66.4794, 2.50241, -19.0935)
-
-[node name="Torch7" parent="." instance=ExtResource("5_1kyur")]
-transform = Transform3D(-0.809017, 0, -0.587785, 0, 1, 0, 0.587785, 0, -0.809017, 66.503, 2.50241, -28.8834)
-
-[node name="Torch8" parent="." instance=ExtResource("5_1kyur")]
-transform = Transform3D(0.309017, 0, -0.951057, 0, 1, 0, 0.951057, 0, 0.309017, 57.2209, 2.50241, -31.8877)
-
-[node name="Ball" parent="." instance=ExtResource("6_wl3h7")]
+[node name="Sonic" parent="." instance=ExtResource("6_wl3h7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9093, 0.180161, -21.1372)
 
 [node name="Wings" parent="." instance=ExtResource("7_ew4e8")]
@@ -82,3 +138,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.424, 0.201479, -27)
 
 [node name="Wisp" parent="." instance=ExtResource("9_gg1ej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.651, 0.20108, -25.5058)
+
+[node name="MazeTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 12.0
+one_shot = true
+
+[node name="MazeGate" parent="." instance=ExtResource("11_omfjb")]
+unique_name_in_owner = true
+transform = Transform3D(0.37082, 0, -1.14127, 0, 1.2, 0, 1.14127, 0, 0.37082, 27.8317, 2.08184, -69.1902)
+
+[node name="MazeFrontLever" parent="." instance=ExtResource("12_fg6xi")]
+unique_name_in_owner = true
+transform = Transform3D(1.36309e-08, 0.311838, 0.950136, 1, -4.37114e-08, -2.44083e-16, 4.15317e-08, 0.950136, -0.311838, 48.7764, 2, -57.9454)
+
+[node name="MazeBackLever" parent="." instance=ExtResource("12_fg6xi")]
+unique_name_in_owner = true
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 23.8905, 2, -29.9535)
+
+[node name="MazeBackGate" parent="." instance=ExtResource("11_omfjb")]
+unique_name_in_owner = true
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 25.8253, 2.0787, -26.4716)
