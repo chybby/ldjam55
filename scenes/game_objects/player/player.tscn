@@ -29,23 +29,6 @@ tracks/0/keys = {
 "values": [Vector3(0, 0.697828, -0.31239)]
 }
 
-[sub_resource type="Animation" id="Animation_dgfii"]
-resource_name = "idle"
-length = 3.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 3),
-"transitions": PackedFloat32Array(0.5, 1, 0.5),
-"update": 0,
-"values": [Vector3(0, 0.697828, -0.31239), Vector3(0, 0.729, -0.312), Vector3(0, 0.697828, -0.31239)]
-}
-
 [sub_resource type="Animation" id="Animation_2j7ko"]
 resource_name = "walk_bob"
 length = 0.8
@@ -61,6 +44,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.5, -0.5, 1),
 "update": 0,
 "values": [Vector3(0, 0.697828, -0.31239), Vector3(0, 0.853589, -0.31239), Vector3(0, 0.697828, -0.31239)]
+}
+
+[sub_resource type="Animation" id="Animation_dgfii"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(0.5, 1, 0.5),
+"update": 0,
+"values": [Vector3(0, 0.697828, -0.31239), Vector3(0, 0.729, -0.312), Vector3(0, 0.697828, -0.31239)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dc6dj"]

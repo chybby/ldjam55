@@ -9,10 +9,18 @@ signal next_dialogue
 @onready var speech_text: Label = %SpeechText
 @onready var profile_picture: TextureRect = %ProfilePicture
 
+
 func _ready():
     profile_picture.material.set_shader_parameter("bob_speed", pp_bob_speed)
     profile_picture.material.set_shader_parameter("bob_amplitude", pp_bob_amplitude)
     profile_picture.material.set_shader_parameter("texture_size", profile_picture.size)
+
+
+func _input(event):
+    if visible:
+        accept_event()
+        if event.is_action_pressed("next_dialogue"):
+            progress_dialogue()
 
 
 func show_dialogue(dialogue: Array[String]):

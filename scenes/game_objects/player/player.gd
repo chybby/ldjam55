@@ -13,8 +13,10 @@ extends CharacterBody3D
 @onready var held_item_marker: Marker3D = $HeldItemMarker
 
 
+var ground_velocity := Vector2.ZERO
 var target_velocity := Vector3.ZERO
 var mouse_input := Vector2.ZERO
+var jumped := false
 
 var held_item : Interactable = null
 
@@ -31,8 +33,12 @@ func _unhandled_input(event: InputEvent) -> void:
         elif event is InputEventKey:
             if event.is_action_pressed("escape"):
                 Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-            if event.is_action_pressed("interact") and interact_ray.interactable != null:
+            elif event.is_action_pressed("interact") and interact_ray.interactable != null:
                 interact(interact_ray.interactable)
+            elif event.is_action_pressed("jump"):
+                jumped = true
+            else:
+                ground_velocity = get_movement_input()
     else:
         if event is InputEventMouseButton:
             if event.button_index == 1:
@@ -54,8 +60,6 @@ func _physics_process(delta: float) -> void:
     var speed := walk_speed
     animation_player.speed_scale = 1
 
-    var ground_velocity := get_movement_input()
-
     if Input.is_action_pressed("sprint") and !ground_velocity.is_zero_approx():
         speed = sprint_speed
         animation_player.speed_scale = sprint_speed/walk_speed
@@ -76,8 +80,9 @@ func _physics_process(delta: float) -> void:
         animation_player.play("RESET", 2)
     else:
         target_velocity.y = 0
-        if Input.is_action_just_pressed("jump"):
+        if jumped:
             target_velocity.y = jump_strength
+            jumped = false
 
     velocity = target_velocity
     move_and_slide()
@@ -102,15 +107,16 @@ func interact(interactable: Interactable) -> void:
     else:
         interactable.interact(held_item)
 
+    # Update prompt.
+    on_interactable_changed(interactable)
+
 
 func on_interactable_changed(interactable: Interactable) -> void:
     if interactable == null:
-        pass
+        GameEvents.emit_update_prompt("")
     else:
         var prompt := interactable.get_prompt(held_item)
-        if prompt != "":
-            # TODO: display on HUD.
-            print(prompt)
+        GameEvents.emit_update_prompt(prompt)
 
 
 func get_movement_input() -> Vector2:

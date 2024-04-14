@@ -1,7 +1,7 @@
 extends Node
 
-signal example
+signal update_prompt(prompt)
 
 
-func emit_example() -> void:
-    example.emit()
+func emit_update_prompt(prompt: String) -> void:
+    update_prompt.emit(prompt)

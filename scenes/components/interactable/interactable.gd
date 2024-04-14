@@ -7,12 +7,18 @@ extends Area3D
 
 signal was_interacted_with(item: Interactable)
 
+func _ready() -> void:
+    # Otherwise different interactables share the same instance for some reason.
+    prompt_map = prompt_map.duplicate()
+
 
 func get_prompt(held_item: Interactable) -> String:
     if is_pickup:
         if held_item == null:
             return "Pick up " + item_name
-        return "Swap %s with %s" % [held_item.item_name, item_name]
+        elif held_item != self:
+            return "Swap %s with %s" % [held_item.item_name, item_name]
+        return ""
 
     if held_item == null and "default" in prompt_map:
         return prompt_map.get("default")

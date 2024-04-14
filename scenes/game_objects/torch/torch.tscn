@@ -65,7 +65,7 @@ script = ExtResource("1_qt3n4")
 [node name="Interactable" parent="." instance=ExtResource("2_iec0l")]
 item_name = "Torch"
 prompt_map = {
-"Lamp": "Light torch"
+"Lamp": "Light Torch with Lamp"
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]

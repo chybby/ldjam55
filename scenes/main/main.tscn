@@ -1,23 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://ef5dqqevmxcn"]
+[gd_scene load_steps=7 format=3 uid="uid://ef5dqqevmxcn"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_jcq7f"]
 [ext_resource type="PackedScene" uid="uid://dionueqr7qrkx" path="res://scenes/game_objects/levels/dungeon.tscn" id="2_igwo7"]
-[ext_resource type="Script" path="res://scenes/main/GUI.gd" id="3_rc64n"]
-[ext_resource type="PackedScene" uid="uid://calypvp446the" path="res://scenes/ui/dialogue.tscn" id="3_t0uw2"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogue.tscn" id="3_t0uw2"]
+[ext_resource type="PackedScene" uid="uid://5iyupcfvbku4" path="res://scenes/ui/title.tscn" id="4_0h664"]
+[ext_resource type="PackedScene" uid="uid://d17qip0d82p5n" path="res://scenes/ui/hud.tscn" id="4_r0h2i"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_j2shs"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("WorldViewport")
 
 [node name="Main" type="CanvasLayer"]
 script = ExtResource("1_jcq7f")
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="WorldViewport" type="SubViewport" parent="."]
 handle_input_locally = false
 size = Vector2i(320, 180)
 
-[node name="Dungeon" parent="SubViewport" instance=ExtResource("2_igwo7")]
+[node name="Dungeon" parent="WorldViewport" instance=ExtResource("2_igwo7")]
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="WorldView" type="TextureRect" parent="."]
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,9 +36,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("3_rc64n")
+
+[node name="Title" parent="GUI" instance=ExtResource("4_0h664")]
+layout_mode = 1
+
+[node name="HUD" parent="GUI" instance=ExtResource("4_r0h2i")]
+layout_mode = 1
 
 [node name="Dialogue" parent="GUI" instance=ExtResource("3_t0uw2")]
 unique_name_in_owner = true
 process_mode = 3
+visible = false
 layout_mode = 1
