@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bklu42pxrihc2"]
+
+[ext_resource type="Script" path="res://scenes/components/holdable/holdable.gd" id="1_tltex"]
+
+[node name="Holdable" type="Node"]
+script = ExtResource("1_tltex")

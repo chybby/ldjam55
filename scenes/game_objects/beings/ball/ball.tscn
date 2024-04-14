@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://0mgktkmtad83"]
+[gd_scene load_steps=7 format=3 uid="uid://0mgktkmtad83"]
 
-[ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="1_5vh8x"]
+[ext_resource type="Script" path="res://scenes/game_objects/beings/ball/ball.gd" id="1_17ovb"]
+[ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="2_42n42"]
+[ext_resource type="Script" path="res://scenes/components/holdable/holdable.gd" id="3_e55mj"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_du4xi"]
 radius = 0.2
@@ -14,6 +16,7 @@ radius = 0.2
 
 [node name="Ball" type="StaticBody3D"]
 collision_mask = 0
+script = ExtResource("1_17ovb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213436, 0)
@@ -26,10 +29,11 @@ shape = SubResource("SphereShape3D_2fjdu")
 [node name="Interactable" type="Area3D" parent="."]
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("1_5vh8x")
-is_pickup = true
-item_name = "Ball"
+script = ExtResource("2_42n42")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213783, 0)
 shape = SubResource("SphereShape3D_g3cm4")
+
+[node name="Holdable" type="Node" parent="."]
+script = ExtResource("3_e55mj")

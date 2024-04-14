@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmvtcc3g0xbgk"]
+[gd_scene load_steps=7 format=3 uid="uid://cmvtcc3g0xbgk"]
 
-[ext_resource type="Script" path="res://scenes/game_objects/lamp/lamp.gd" id="1_4yjps"]
-[ext_resource type="PackedScene" uid="uid://7142jecov43c" path="res://assets/lamp.blend" id="1_huw35"]
-[ext_resource type="PackedScene" uid="uid://c5nstwfej32oa" path="res://scenes/components/interactable/interactable.tscn" id="2_77fgf"]
+[ext_resource type="Script" path="res://scenes/game_objects/beings/lamp/lamp.gd" id="1_i5707"]
+[ext_resource type="PackedScene" uid="uid://7142jecov43c" path="res://assets/lamp.blend" id="2_taslg"]
+[ext_resource type="PackedScene" uid="uid://c5nstwfej32oa" path="res://scenes/components/interactable/interactable.tscn" id="3_tnqdh"]
+[ext_resource type="PackedScene" uid="uid://bklu42pxrihc2" path="res://scenes/components/holdable/holdable.tscn" id="4_otsuv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kph6i"]
 size = Vector3(0.35, 0.45, 0.3)
@@ -12,13 +13,13 @@ radius = 0.179256
 height = 0.473487
 
 [node name="Lamp" type="StaticBody3D"]
-script = ExtResource("1_4yjps")
+script = ExtResource("1_i5707")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.233857, 0)
 shape = SubResource("BoxShape3D_kph6i")
 
-[node name="Model" parent="." instance=ExtResource("1_huw35")]
+[node name="Model" parent="." instance=ExtResource("2_taslg")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0388013, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
@@ -27,10 +28,10 @@ light_color = Color(0.972549, 0.568627, 0.117647, 1)
 light_energy = 4.966
 shadow_enabled = true
 
-[node name="Interactable" parent="." instance=ExtResource("2_77fgf")]
-is_pickup = true
-item_name = "Lamp"
+[node name="Interactable" parent="." instance=ExtResource("3_tnqdh")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22307, 0)
 shape = SubResource("CapsuleShape3D_47uyy")
+
+[node name="Holdable" parent="." instance=ExtResource("4_otsuv")]

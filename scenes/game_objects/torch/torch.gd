@@ -11,17 +11,25 @@ var lit := false
 
 func _ready() -> void:
     interactable.was_interacted_with.connect(on_interact)
+    interactable.was_pondered_while_holding.connect(on_ponder)
     if starts_lit:
         light_torch()
 
 
 func light_torch() -> void:
-    interactable.prompt_map.erase("Lamp")
     omni_light_3d.visible = true
     fire_particles.emitting = true
     lit = true
 
 
-func on_interact(item: Interactable) -> void:
-    if not lit and item.item_name == "Lamp":
+func on_ponder(held_item: Holdable) -> void:
+    if not lit and held_item != null and held_item.owner.name == "Lamp":
+        GameEvents.emit_update_prompt("Light Torch using %s" % [held_item.owner.name])
+        return
+
+    GameEvents.emit_update_prompt("")
+
+
+func on_interact(held_item: Holdable) -> void:
+    if not lit and held_item.owner.name == "Lamp":
         light_torch()

@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 @export_range(0.0, 100.0, 0.1, "or_greater", "suffix:m/s") var walk_speed: float = 3.0
@@ -18,7 +19,7 @@ var target_velocity := Vector3.ZERO
 var mouse_input := Vector2.ZERO
 var jumped := false
 
-var held_item : Interactable = null
+var held_item : Holdable = null
 
 
 func _ready() -> void:
@@ -93,30 +94,31 @@ func handle_captured_mouse_motion(event: InputEventMouseMotion) -> void:
     mouse_input += event.xformed_by(viewport_transform).relative
 
 
+func pick_up(holdable: Holdable) -> void:
+    if held_item != null:
+        held_item.owner.reparent(get_parent())
+        held_item.owner.position = holdable.owner.position
+        held_item.owner.set_collision_layer_value(1, true)
+        held_item.drop()
+
+    held_item = holdable
+    held_item.owner.reparent(held_item_marker)
+    held_item.owner.position = Vector3.ZERO
+    held_item.owner.set_collision_layer_value(1, false)
+
+
 func interact(interactable: Interactable) -> void:
-    if interactable.is_pickup:
-        if held_item != null:
-            held_item.owner.reparent(get_parent())
-            held_item.owner.position = interactable.owner.position
-            held_item.owner.set_collision_layer_value(1, true)
+    interactable.interact(held_item)
 
-        held_item = interactable
-        held_item.owner.reparent(held_item_marker)
-        held_item.owner.position = Vector3.ZERO
-        held_item.owner.set_collision_layer_value(1, false)
-    else:
-        interactable.interact(held_item)
-
-    # Update prompt.
-    on_interactable_changed(interactable)
+    # Update prompt after interaction.
+    interactable.ponder(held_item)
 
 
 func on_interactable_changed(interactable: Interactable) -> void:
     if interactable == null:
         GameEvents.emit_update_prompt("")
     else:
-        var prompt := interactable.get_prompt(held_item)
-        GameEvents.emit_update_prompt(prompt)
+        interactable.ponder(held_item)
 
 
 func get_movement_input() -> Vector2:
