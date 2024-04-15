@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://calypvp446the"]
+[gd_scene load_steps=10 format=3 uid="uid://blnggp4kihs84"]
 
 [ext_resource type="Texture2D" uid="uid://bsbbj3fg6enwl" path="res://assets/goat.png" id="1_58iyd"]
 [ext_resource type="Script" path="res://scenes/ui/dialogue.gd" id="1_jplme"]
@@ -116,10 +116,10 @@ anchor_bottom = 1.0
 offset_top = -176.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/margin_left = 16
+theme_override_constants/margin_left = 200
 theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 60
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2

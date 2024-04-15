@@ -48,6 +48,6 @@ func on_interact(held_item: Holdable) -> void:
     tween.tween_property(being, "position", Vector3.ZERO, 5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
     tween.tween_interval(2.0)
     tween.tween_callback(stop_summoning_effects)
-    tween.tween_property(being_path_follow, "progress_ratio", 1, 15).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+    tween.tween_property(being_path_follow, "progress_ratio", 1, 30).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
     await tween.finished
     (being.interactable as Interactable).set_collision_layer_value(4, true)

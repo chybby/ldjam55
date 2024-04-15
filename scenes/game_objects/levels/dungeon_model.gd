@@ -16,5 +16,5 @@ func start_summon() -> void:
     animation_player_3.play("Armature_002Action ")
     animation_player_4.play("Armature_002Action_001 ")
     animation_player_5.play("Armature_003Action ")
-    animation_player_6.play("Armature_003Action_001 2")
+    animation_player_6.play("Armature_003Action_001 ")
     animation_player_7.play("TentaclesAction")

@@ -26,13 +26,13 @@ func _input(event) -> void:
 
 
 func toggle_settings() -> void:
-        
+
         if not get_tree().paused:
             animation_player.play("background_blur")
             Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
         else:
             animation_player.play_backwards("background_blur")
-            Input.mouse_mode = Input.MOUSE_MODE_CAPTURED        
+            Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
             await animation_player.animation_finished
 
         visible = not visible
@@ -40,8 +40,8 @@ func toggle_settings() -> void:
 
 func on_return_button_pressed() -> void:
     toggle_settings()
-    
-    
+
+
 func on_quit_button_pressed() -> void:
     get_tree().quit()
 
@@ -56,12 +56,12 @@ func on_master_slider_value_changed(value: float) -> void:
 
 func on_music_slider_value_changed(value: float) -> void:
     var music_bus_idx := AudioServer.get_bus_index("Music")
-    change_audio_bus_volume(music_bus_idx, value)        
+    change_audio_bus_volume(music_bus_idx, value)
 
 
 func on_sfx_slider_value_changed(value: float) -> void:
     var sfx_bus_idx := AudioServer.get_bus_index("SFX_dry")
     change_audio_bus_volume(sfx_bus_idx, value)
-    
+
 func on_title_dismissed() -> void:
     enabled = true

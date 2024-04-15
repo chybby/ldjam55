@@ -424,7 +424,7 @@ rotation_mode = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.2507, 0.207253, 7.11598)
 
 [node name="DebugSpawn" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9254, 1.50973, -23.8418)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.1726, 1.50973, -38.0816)
 
 [node name="MazeTimer" type="Timer" parent="."]
 unique_name_in_owner = true

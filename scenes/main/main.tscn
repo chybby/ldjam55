@@ -1,17 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://ef5dqqevmxcn"]
+[gd_scene load_steps=10 format=3 uid="uid://ef5dqqevmxcn"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_jcq7f"]
 [ext_resource type="PackedScene" uid="uid://dionueqr7qrkx" path="res://scenes/game_objects/levels/dungeon.tscn" id="2_igwo7"]
-[ext_resource type="PackedScene" uid="uid://calypvp446the" path="res://scenes/ui/dialogue.tscn" id="3_t0uw2"]
+[ext_resource type="PackedScene" uid="uid://blnggp4kihs84" path="res://scenes/ui/dialogue.tscn" id="3_t0uw2"]
 [ext_resource type="PackedScene" uid="uid://5iyupcfvbku4" path="res://scenes/ui/title.tscn" id="4_0h664"]
 [ext_resource type="PackedScene" uid="uid://d17qip0d82p5n" path="res://scenes/ui/hud.tscn" id="4_r0h2i"]
 [ext_resource type="PackedScene" uid="uid://hvk5n6w6tmr5" path="res://scenes/ui/end_game.tscn" id="6_b33jp"]
 [ext_resource type="AudioStream" uid="uid://cwrh36hx7lea1" path="res://assets/sounds/bgmusic.mp3" id="6_pqxox"]
-[ext_resource type="AudioStream" uid="uid://c778h0t46pabf" path="res://assets/sounds/intro_placeholder2.mp3" id="7_agwbl"]
-[ext_resource type="AudioStream" uid="uid://pustjq1byvs5" path="res://assets/sounds/intro_placeholder3.mp3" id="8_002dn"]
-[ext_resource type="AudioStream" uid="uid://d14lhr4p83h7b" path="res://assets/sounds/intro_placeholder4.mp3" id="9_eitgx"]
-[ext_resource type="AudioStream" uid="uid://ycveqftaf6if" path="res://assets/sounds/intro_placeholder5.mp3" id="10_02g4p"]
-[ext_resource type="PackedScene" uid="uid://l660nwqrb5sp" path="res://scenes/ui/settings.tscn" id="12_yt68s"]
+[ext_resource type="PackedScene" path="res://scenes/ui/settings.tscn" id="12_yt68s"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_j2shs"]
 viewport_path = NodePath("WorldViewport")
@@ -58,6 +54,7 @@ unique_name_in_owner = true
 process_mode = 1
 visible = false
 layout_mode = 1
+dialogue_lines = Array[String](["Hello", "Testing 1 2 3", "Goodbye"])
 
 [node name="EndGame" parent="GUI" instance=ExtResource("6_b33jp")]
 unique_name_in_owner = true
