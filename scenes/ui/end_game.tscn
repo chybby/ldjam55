@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://hvk5n6w6tmr5"]
+
+[ext_resource type="Script" path="res://scenes/ui/end_game.gd" id="1_w7dj6"]
+
+[sub_resource type="Gradient" id="Gradient_xuyan"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.608431, 0.298833, 0.209043, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ehk42"]
+gradient = SubResource("Gradient_xuyan")
+
+[node name="EndGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w7dj6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ehk42")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -337.0
+offset_top = -78.0
+offset_right = 337.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 205
+
+[node name="YouWin" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "Thank You for Playing!"
+horizontal_alignment = 1
+
+[node name="GameTime" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 81
+text = "Total Time: "
+horizontal_alignment = 1

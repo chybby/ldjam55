@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7rmxr1viqfp"]
+
+[ext_resource type="PackedScene" uid="uid://c5nstwfej32oa" path="res://scenes/components/interactable/interactable.tscn" id="1_mkjlj"]
+[ext_resource type="Script" path="res://scenes/game_objects/megaphone/megaphone.gd" id="1_nol1q"]
+[ext_resource type="PackedScene" uid="uid://bklu42pxrihc2" path="res://scenes/components/holdable/holdable.tscn" id="2_2p2xk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_llec0"]
+albedo_color = Color(0.737255, 0, 0.141176, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5sdut"]
+material = SubResource("StandardMaterial3D_llec0")
+top_radius = 0.2
+bottom_radius = 0.1
+height = 0.3
+radial_segments = 16
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8jm5x"]
+radius = 0.190967
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ay4x8"]
+radius = 0.164317
+
+[node name="Megaphone" type="StaticBody3D"]
+script = ExtResource("1_nol1q")
+
+[node name="Model" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.202125, 0)
+mesh = SubResource("CylinderMesh_5sdut")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206158, 0)
+shape = SubResource("SphereShape3D_8jm5x")
+
+[node name="Interactable" parent="." instance=ExtResource("1_mkjlj")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.207095, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+shape = SubResource("SphereShape3D_ay4x8")
+
+[node name="Holdable" parent="." instance=ExtResource("2_2p2xk")]
+unique_name_in_owner = true

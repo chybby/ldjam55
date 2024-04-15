@@ -12,6 +12,10 @@ func _ready() -> void:
     holdable.was_dropped.connect(on_drop)
 
 
+func set_home(new_home: Node3D) -> void:
+    home = new_home
+
+
 func send_home() -> void:
     global_position = home.global_position
 
@@ -19,7 +23,7 @@ func send_home() -> void:
 func on_ponder(held_item: Holdable) -> void:
     if held_item == null:
         GameEvents.emit_update_prompt("Pick up " + name)
-    elif held_item != holdable:
+    elif held_item != holdable and held_item.owner.name != "Megaphone":
         GameEvents.emit_update_prompt("Swap %s with %s" % [held_item.owner.name, name])
 
 

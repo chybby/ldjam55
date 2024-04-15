@@ -31,7 +31,7 @@ func _ready() -> void:
     player.rotate_object_local(Vector3.UP, -PI/2.5)
 
     #TODO: debugging
-    player.global_position = $DebugSpawn.global_position
+    #player.global_position = $DebugSpawn.global_position
 
 
 func on_maze_timer_timeout() -> void:

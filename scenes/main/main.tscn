@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ef5dqqevmxcn"]
+[gd_scene load_steps=8 format=3 uid="uid://ef5dqqevmxcn"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_jcq7f"]
 [ext_resource type="PackedScene" uid="uid://dionueqr7qrkx" path="res://scenes/game_objects/levels/dungeon.tscn" id="2_igwo7"]
-[ext_resource type="PackedScene" uid="uid://calypvp446the" path="res://scenes/ui/dialogue.tscn" id="3_t0uw2"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogue.tscn" id="3_t0uw2"]
 [ext_resource type="PackedScene" uid="uid://5iyupcfvbku4" path="res://scenes/ui/title.tscn" id="4_0h664"]
 [ext_resource type="PackedScene" uid="uid://d17qip0d82p5n" path="res://scenes/ui/hud.tscn" id="4_r0h2i"]
+[ext_resource type="PackedScene" uid="uid://hvk5n6w6tmr5" path="res://scenes/ui/end_game.tscn" id="6_b33jp"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_j2shs"]
 viewport_path = NodePath("WorldViewport")
@@ -13,6 +14,7 @@ viewport_path = NodePath("WorldViewport")
 script = ExtResource("1_jcq7f")
 
 [node name="WorldViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
 handle_input_locally = false
 audio_listener_enable_3d = true
 size = Vector2i(320, 180)
@@ -39,6 +41,7 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="Title" parent="GUI" instance=ExtResource("4_0h664")]
+unique_name_in_owner = true
 layout_mode = 1
 
 [node name="HUD" parent="GUI" instance=ExtResource("4_r0h2i")]
@@ -47,5 +50,10 @@ layout_mode = 1
 [node name="Dialogue" parent="GUI" instance=ExtResource("3_t0uw2")]
 unique_name_in_owner = true
 process_mode = 3
+visible = false
+layout_mode = 1
+
+[node name="EndGame" parent="GUI" instance=ExtResource("6_b33jp")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1

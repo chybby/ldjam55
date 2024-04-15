@@ -28,7 +28,8 @@ func on_interact(held_item: Holdable) -> void:
 
     being_path_follow.add_child(being)
     (being.interactable as Interactable).set_collision_layer_value(4, false)
-    being.home = being_path_follow
+    if being.has_method("set_home"):
+        being.set_home(being_path_follow)
 
     var tween = get_tree().create_tween()
     tween.tween_property(being_path_follow, "progress_ratio", 1, 15).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)

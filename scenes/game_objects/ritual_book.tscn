@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://colmfysd6u5ua"]
+
+[ext_resource type="PackedScene" uid="uid://cfc6uqgo38ka4" path="res://assets/book.blend" id="1_32yh4"]
+[ext_resource type="Script" path="res://scenes/game_objects/ritual_book.gd" id="1_ws1q3"]
+[ext_resource type="PackedScene" uid="uid://c5nstwfej32oa" path="res://scenes/components/interactable/interactable.tscn" id="2_l6d0u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tqeuf"]
+size = Vector3(2.04565, 0.210022, 2.23108)
+
+[node name="RitualBook" type="Node3D"]
+script = ExtResource("1_ws1q3")
+
+[node name="Model" parent="." instance=ExtResource("1_32yh4")]
+
+[node name="Interactable" parent="." instance=ExtResource("2_l6d0u")]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0413818, 0.114655, -0.00335693)
+shape = SubResource("BoxShape3D_tqeuf")
