@@ -1,9 +1,9 @@
 extends Node3D
 
 @export var being_scene: PackedScene
+@export var being_path_follow: PathFollow3D
 
 @onready var interactable: Interactable = %Interactable
-@onready var being_marker: Marker3D = %BeingMarker
 
 
 var summoning_started := false
@@ -25,5 +25,12 @@ func on_ponder(held_item: Holdable) -> void:
 func on_interact(held_item: Holdable) -> void:
     summoning_started = true
     var being = being_scene.instantiate()
-    add_child(being)
-    being.position = being_marker.position
+
+    being_path_follow.add_child(being)
+    (being.interactable as Interactable).set_collision_layer_value(4, false)
+    being.home = being_path_follow
+
+    var tween = get_tree().create_tween()
+    tween.tween_property(being_path_follow, "progress_ratio", 1, 15).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+    await tween.finished
+    (being.interactable as Interactable).set_collision_layer_value(4, true)

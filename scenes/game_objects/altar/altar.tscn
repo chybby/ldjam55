@@ -40,7 +40,3 @@ transform = Transform3D(0.954376, 0, 0.298608, 0, 1, 0, -0.298608, 0, 0.954376, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000457883, 0.025795, -0.0176999)
 shape = SubResource("BoxShape3D_t5wds")
-
-[node name="BeingMarker" type="Marker3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01188, 0)

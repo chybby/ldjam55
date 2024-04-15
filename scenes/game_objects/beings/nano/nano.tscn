@@ -14,7 +14,7 @@ radius = 0.2
 [sub_resource type="SphereShape3D" id="SphereShape3D_g3cm4"]
 radius = 0.2
 
-[node name="Nano" type="StaticBody3D"]
+[node name="Nano" type="StaticBody3D" groups=["being"]]
 collision_mask = 0
 script = ExtResource("1_fse7i")
 

@@ -3,12 +3,18 @@ extends StaticBody3D
 @onready var interactable: Interactable = $Interactable
 @onready var holdable: Holdable = $Holdable
 
+var home: Node3D
+
 
 func _ready() -> void:
     interactable.was_interacted_with.connect(on_interact)
     interactable.was_pondered_while_holding.connect(on_ponder)
     holdable.was_picked_up.connect(on_pick_up)
     holdable.was_dropped.connect(on_drop)
+
+
+func send_home() -> void:
+    global_position = home.global_position
 
 
 func on_ponder(held_item: Holdable) -> void:
@@ -29,3 +35,4 @@ func on_pick_up(player: Player) -> void:
 func on_drop(player: Player) -> void:
     player.set_player_scale(1)
     scale = Vector3.ONE
+    global_position = home.global_position

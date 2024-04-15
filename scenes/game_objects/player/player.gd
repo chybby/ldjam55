@@ -129,7 +129,6 @@ func handle_captured_mouse_motion(event: InputEventMouseMotion) -> void:
 func pick_up(holdable: Holdable) -> void:
     if held_item != null:
         held_item.owner.reparent(get_parent())
-        held_item.owner.global_position = holdable.owner.global_position
         held_item.owner.set_collision_layer_value(1, true)
         held_item.drop()
 

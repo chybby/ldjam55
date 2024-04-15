@@ -8,15 +8,18 @@ extends Node3D
 @onready var maze_front_lever: Node3D = %MazeFrontLever
 @onready var maze_back_lever: Node3D = %MazeBackLever
 @onready var maze_back_gate: StaticBody3D = %MazeBackGate
-
-
 var maze_puzzle_complete := false
+
+@onready var small_room_gate: StaticBody3D = %SmallRoomGate
+@onready var small_room_lever: Node3D = %SmallRoomLever
+var small_room_puzzle_complete := false
 
 
 func _ready() -> void:
     maze_timer.timeout.connect(on_maze_timer_timeout)
     maze_front_lever.was_pulled.connect(on_maze_front_lever_pulled)
     maze_back_lever.was_pulled.connect(on_maze_back_lever_pulled)
+    small_room_lever.was_pulled.connect(on_small_room_lever_pulled)
 
     var player := player_scene.instantiate() as Player
     add_child(player)
@@ -42,3 +45,8 @@ func on_maze_back_lever_pulled() -> void:
         maze_puzzle_complete = true
         maze_back_gate.open()
 
+
+func on_small_room_lever_pulled() -> void:
+    if not small_room_puzzle_complete:
+        small_room_puzzle_complete = true
+        small_room_gate.open()
