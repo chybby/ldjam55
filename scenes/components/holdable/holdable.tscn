@@ -7,6 +7,3 @@ script = ExtResource("1_tltex")
 
 [node name="PickUpAudioPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"
-
-[node name="DropAudioPlayer" type="AudioStreamPlayer" parent="."]
-bus = &"SFX"

@@ -3,12 +3,15 @@ extends Node3D
 @export var player_scene: PackedScene
 @onready var spawn_point: Marker3D = $SpawnPoint
 
+@export_range (0.0, 1.0) var maze_hurry_up_start_time: float = 0.75
 @onready var maze_timer: Timer = %MazeTimer
 @onready var maze_gate: StaticBody3D = %MazeGate
 @onready var maze_front_lever: Node3D = %MazeFrontLever
 @onready var maze_back_lever: Node3D = %MazeBackLever
 @onready var maze_back_gate: StaticBody3D = %MazeBackGate
+@onready var maze_time_tick_animation_player: AnimationPlayer = $MazeTimeTickAnimationPlayer
 var maze_puzzle_complete := false
+var maze_hurry_up_timer: Timer
 
 @onready var small_room_gate: StaticBody3D = %SmallRoomGate
 @onready var small_room_lever: Node3D = %SmallRoomLever
@@ -25,6 +28,11 @@ func _ready() -> void:
     small_room_lever.was_pulled.connect(on_small_room_lever_pulled)
     moving_platform_lever.was_pulled.connect(on_moving_platform_lever_pulled)
 
+    maze_hurry_up_timer = maze_timer.duplicate()
+    add_child(maze_hurry_up_timer)
+    maze_hurry_up_timer.wait_time *= maze_hurry_up_start_time
+    maze_hurry_up_timer.timeout.connect(on_maze_hurry_up_timer_timeout)
+
     var player := player_scene.instantiate() as Player
     add_child(player)
     player.global_position = spawn_point.global_position
@@ -35,13 +43,20 @@ func _ready() -> void:
 
 
 func on_maze_timer_timeout() -> void:
+    maze_time_tick_animation_player.play("RESET")
     maze_gate.close()
+
+
+func on_maze_hurry_up_timer_timeout() -> void:
+    maze_time_tick_animation_player.speed_scale = 2
 
 
 func on_maze_front_lever_pulled() -> void:
     if not maze_puzzle_complete:
         maze_gate.open()
         maze_timer.start()
+        maze_hurry_up_timer.start()
+        maze_time_tick_animation_player.play("time_tick")
 
 
 func on_maze_back_lever_pulled() -> void:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwj818li3lopx"]
+[gd_scene load_steps=8 format=3 uid="uid://cwj818li3lopx"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/beings/nano/nano.gd" id="1_fse7i"]
 [ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="2_5al7x"]
 [ext_resource type="PackedScene" uid="uid://bklu42pxrihc2" path="res://scenes/components/holdable/holdable.tscn" id="3_8jwgo"]
+[ext_resource type="AudioStream" uid="uid://bg0mtecqt50ji" path="res://assets/sounds/nano_pickup.mp3" id="4_tk6cf"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_tpsdg"]
 inner_radius = 0.081
@@ -36,3 +37,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213783, 0)
 shape = SubResource("SphereShape3D_g3cm4")
 
 [node name="Holdable" parent="." instance=ExtResource("3_8jwgo")]
+pick_up_audio_stream = ExtResource("4_tk6cf")
