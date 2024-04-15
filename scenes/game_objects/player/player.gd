@@ -44,9 +44,7 @@ func _unhandled_input(event: InputEvent) -> void:
         if event is InputEventMouseMotion:
             handle_captured_mouse_motion(event)
         elif event is InputEventKey:
-            if event.is_action_pressed("escape"):
-                Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-            elif event.is_action_pressed("interact") and interact_ray.interactable != null:
+            if event.is_action_pressed("interact") and interact_ray.interactable != null:
                 interact(interact_ray.interactable)
             elif event.is_action_pressed("jump"):
                 jumped = true

@@ -61,6 +61,7 @@ func on_maze_hurry_up_timer_timeout() -> void:
 func on_maze_front_lever_pulled() -> void:
     if not maze_puzzle_complete:
         maze_gate.open()
+        maze_time_tick_animation_player.speed_scale = 1
         maze_timer.start()
         maze_hurry_up_timer.start()
         maze_time_tick_animation_player.play("time_tick")

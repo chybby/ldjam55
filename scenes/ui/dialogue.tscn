@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bsbbj3fg6enwl" path="res://assets/goat.png" id="1_58iyd"]
 [ext_resource type="Script" path="res://scenes/ui/dialogue.gd" id="1_jplme"]
-[ext_resource type="Shader" path="res://scenes/ui/dialogue.gdshader" id="3_u8w5b"]
+[ext_resource type="Shader" path="res://scenes/ui/wavy_text.gdshader" id="3_7el46"]
 
 [sub_resource type="Shader" id="Shader_7y6tw"]
 code = "shader_type canvas_item;
@@ -33,7 +33,7 @@ shader_parameter/bob_amplitude = null
 shader_parameter/texture_size = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gcjw1"]
-shader = ExtResource("3_u8w5b")
+shader = ExtResource("3_7el46")
 
 [sub_resource type="Animation" id="Animation_exmm8"]
 length = 0.001
