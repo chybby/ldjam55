@@ -28,4 +28,5 @@ func on_interact(held_item: Holdable) -> void:
 
 
 func on_drop(player: Player) -> void:
-    global_position = home.global_position
+    if home != null:
+        global_position = home.global_position

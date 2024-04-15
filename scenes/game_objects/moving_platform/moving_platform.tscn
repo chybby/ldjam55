@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://oxoulj6pucl7"]
+
+[ext_resource type="PackedScene" uid="uid://x0x6tjkag74k" path="res://assets/moving_platform.blend" id="1_paffk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eq88v"]
+size = Vector3(1.99323, 3.74841, 2.00317)
+
+[node name="MovingPlatform" type="AnimatableBody3D"]
+
+[node name="Model" parent="." instance=ExtResource("1_paffk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.00350952, 3.731, -0.00012207)
+shape = SubResource("BoxShape3D_eq88v")

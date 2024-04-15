@@ -37,4 +37,5 @@ func on_pick_up(player: Player) -> void:
 
 func on_drop(player: Player) -> void:
     player.fall_acceleration = saved_fall_acceleration
-    global_position = home.global_position
+    if home != null:
+        global_position = home.global_position

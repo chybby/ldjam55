@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func set_sprint_speed() -> void:
     playback_pitch_scale = 1.5
-    next_step_timer.wait_time = 0.05
+    next_step_timer.wait_time = 0.8 / 2.5
 
 
 func set_walk_speed() -> void:

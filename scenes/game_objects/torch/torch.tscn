@@ -102,6 +102,7 @@ emitting = false
 amount = 30
 lifetime = 6.0
 preprocess = 1.0
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_h37pr")
 draw_pass_1 = SubResource("BoxMesh_sofpu")
 

@@ -33,4 +33,5 @@ func on_pick_up(player: Player) -> void:
 
 func on_drop(player: Player) -> void:
     player.enable_glow_trail(false)
-    global_position = home.global_position
+    if home != null:
+        global_position = home.global_position

@@ -31,6 +31,8 @@ var in_air := false
 
 var held_item : Holdable = null
 
+var initial_walk_speed := walk_speed
+
 
 func _ready() -> void:
     health.died.connect(on_died)
@@ -68,7 +70,7 @@ func _physics_process(delta: float) -> void:
 
     # Moving.
     var speed := walk_speed
-    animation_player.speed_scale = 1
+    animation_player.speed_scale = walk_speed/initial_walk_speed
 
     # TODO: disable sprint for now
     #if Input.is_action_pressed("sprint") and !ground_velocity.is_zero_approx():

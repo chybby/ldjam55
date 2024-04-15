@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dionueqr7qrkx"]
+[gd_scene load_steps=22 format=3 uid="uid://dionueqr7qrkx"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/levels/dungeon.gd" id="1_urk0f"]
 [ext_resource type="PackedScene" uid="uid://cwav8ma78d78y" path="res://scenes/game_objects/player/player.tscn" id="2_t4pnu"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://c1t0jfr15uble" path="res://scenes/game_objects/altar/altar.tscn" id="10_nrln7"]
 [ext_resource type="PackedScene" uid="uid://ce8iwsmlv468s" path="res://scenes/game_objects/gate/gate.tscn" id="11_omfjb"]
 [ext_resource type="PackedScene" uid="uid://fsi78ui2tshi" path="res://scenes/game_objects/lever/lever.tscn" id="12_fg6xi"]
+[ext_resource type="PackedScene" uid="uid://dldol1ja4gcyr" path="res://scenes/game_objects/pusher/pusher.tscn" id="13_8hlw0"]
+[ext_resource type="PackedScene" uid="uid://oxoulj6pucl7" path="res://scenes/game_objects/moving_platform/moving_platform.tscn" id="14_w0l5x"]
 
 [sub_resource type="Curve3D" id="Curve3D_oxh56"]
 _data = {
@@ -19,6 +21,20 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 22
+
+[sub_resource type="Curve3D" id="Curve3D_us6kq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0263824, 1.05675, 0.0128403, 1.55645, -0.229829, -0.943398, -1.55645, 0.229829, 0.943398, -1.46145, 2.07595, -0.482658, 0.564289, -0.170909, -0.951271, -0.564289, 0.170909, 0.951271, -3.88709, 1.7408, -0.230324, 0.537331, -1.07533, -0.332748, -0.537331, 1.07533, 0.332748, -6.61982, 2.12343, -0.349663, 0.197834, 0.25236, -0.529854, -0.197834, -0.25236, 0.529854, -10.0164, 1.67571, -0.178238, 0.717163, -0.291024, 0.301121, -0.717163, 0.291024, -0.301121, -12.9169, 1.10283, 0.0378494, 0.951862, -0.825687, -0.245918, -0.951862, 0.825687, 0.245918, -15.6779, 1.82807, -0.230778, -0.0199776, -0.610968, 1.02595, 0.0199776, 0.610968, -1.02595, -19.7781, 1.08901, -0.578457, 0.0830536, -1.10354, 0.531097, -0.0830536, 1.10354, -0.531097, -23.6183, 1.52155, -1.5945, 0.0539436, -0.445945, 0.436729, -0.0539436, 0.445945, -0.436729, -26.5049, 1.35866, -1.93034, 0.326252, -0.812364, 0.669815, -0.326252, 0.812364, -0.669815, -30.2158, 1.16144, -4.46064, 0.25523, -0.685872, 0.516682, -0.25523, 0.685872, -0.516682, -33.8723, 2.00499, -4.65911, 0.431232, -0.686152, -0.659161, -0.431232, 0.686152, 0.659161, -36.2096, 1.46188, -6.85338, 0.129868, -0.688359, -0.12674, -0.129868, 0.688359, 0.12674, -38.5374, 1.28635, -6.91809, 1.2765, -0.199339, -0.917526, -1.2765, 0.199339, 0.917526, -42.7676, 1.41183, -7.21409, 0.33987, 0.432065, -0.768551, -0.33987, -0.432065, 0.768551, -43.6311, 1.2571, -3.91377, 0.480492, -0.955127, -0.474056, -0.480492, 0.955127, 0.474056, -44.9163, 1.74481, -0.990131, -0.948963, 1.2545, -1.33069, 0.948963, -1.2545, 1.33069, -44.2251, 1.45643, 2.96497, 0.471428, 0.161514, -1.224, -0.471428, -0.161514, 1.224, -43.1996, 1.89063, 7.20222, 0.927555, -0.350858, -1.72087, -0.927555, 0.350858, 1.72087, -44.7192, 2.18409, 11.2721, 0.191216, 0.57912, -1.0247, -0.191216, -0.57912, 1.0247, -44.7689, 1.17459, 15.4335, 0.86129, -0.233752, -1.69275, -0.86129, 0.233752, 1.69275, -43.5383, 1.10421, 20.2332, 0.544151, 0.508313, -1.74446, -0.544151, -0.508313, 1.74446, -46.7227, 2.80205, 22.4526, -0.448952, 0.138103, -1.59463, 0.448952, -0.138103, 1.59463, -48.4409, 3.03594, 25.2217, -0.223953, -0.260518, 0.345451, 0.223953, 0.260518, -0.345451, -47.2094, 2.30191, 25.6242, 0, 0, 0, 0, 0, 0, -46.989, 2.0378, 24.1309),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 26
+
+[sub_resource type="Curve3D" id="Curve3D_nlk6h"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0502815, 1.09024, -0.0726757, -1.11581, 0.0302916, -1.02639, 1.11581, -0.0302916, 1.02639, 2.51053, 2.62783, -0.167479, -0.5341, -0.126339, -1.39286, 0.5341, 0.126339, 1.39286, 3.71632, 2.03411, 3.07262, -0.264683, -0.664796, -1.13599, 0.264683, 0.664796, 1.13599, 5.36729, 2.27292, 5.44059, 0.295498, 0.976016, -1.01055, -0.295498, -0.976016, 1.01055, 4.23795, 1.6629, 9.37267, -0.0179558, 0.0834904, -1.3313, 0.0179558, -0.0834904, 1.3313, 1.60091, 0.282912, 10.9501, 0.177284, 0.570903, -0.462114, -0.177284, -0.570903, 0.462114, 1.95334, -0.335588, 13.2587, 0.0439224, 0.241852, -1.09068, -0.0439224, -0.241852, 1.09068, 0.812542, -0.714672, 15.4472, 0.589012, 0.826116, 0.168236, -0.589012, -0.826116, -0.168236, -2.2533, -1.66343, 16.4944, 1.0794, 0.294278, 0.937362, -1.0794, -0.294278, -0.937362, -5.55354, -1.70682, 14.5542, 1.26123, 0.558786, 0.984422, -1.26123, -0.558786, -0.984422, -7.67555, -3.00354, 12.6784, 0.0947227, -0.81088, 0.505447, -0.0947227, 0.81088, -0.505447, -7.48166, -3.30455, 8.52501, -1.21967, 0.00984526, 0.153308, 1.21967, -0.00984526, -0.153308, -5.55748, -3.60485, 5.2515, -0.0759506, -0.307875, 0.34332, 0.0759506, 0.307875, -0.34332, -3.57384, -4.63826, 4.98708, 0.134411, 0.0695543, 0.70715, -0.134411, -0.0695543, -0.70715, -1.39186, -4.85977, 2.59773, 0.422588, 0.542965, 1.32844, -0.422588, -0.542965, -1.32844, -0.0486717, -6.20486, -0.0743847, 0.049633, -0.0919576, 0.585918, -0.049633, 0.0919576, -0.585918, -0.236675, -6.14561, -1.9639, 0.494293, 0.442477, 1.22995, -0.494293, -0.442477, -1.22995, 0.275017, -6.59963, -4.46778, 0.101772, -0.122625, 1.01418, -0.101772, 0.122625, -1.01418, -0.866287, -6.86049, -7.89038, -0.0621605, -0.661201, 1.10012, 0.0621605, 0.661201, -1.10012, 0.261189, -7.05367, -11.1987, 0.535713, 0.268349, 1.05765, -0.535713, -0.268349, -1.05765, -0.78516, -5.99508, -13.7931, 0.438488, 0.00159693, 1.28897, -0.438488, -0.00159693, -1.28897, -1.9277, -6.86642, -16.6634, 0.544792, 0.129674, 1.35434, -0.544792, -0.129674, -1.35434, -1.6151, -6.26903, -20.2491, 0.439159, -0.157191, 1.59994, -0.439159, 0.157191, -1.59994, 0.490681, -6.97754, -23.5317, 0.305756, -0.640587, 0.663342, -0.305756, 0.640587, -0.663342, 0.758068, -5.83837, -26.5756, 0.154125, -0.0576706, 0.152168, -0.154125, 0.0576706, -0.152168, 1.30801, -5.34529, -28.1511, 0.43502, 0.326165, 0.095089, -0.43502, -0.326165, -0.095089, 0.443787, -5.13014, -28.093, 0, 0, 0, 0, 0, 0, -0.00125885, -5.954, -27.4957),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 28
 
 [sub_resource type="Environment" id="Environment_t3h81"]
 background_color = Color(0.823529, 0.823529, 0.823529, 1)
@@ -39,7 +55,45 @@ volumetric_fog_density = 0.1007
 volumetric_fog_albedo = Color(0.796078, 0.345098, 0.290196, 1)
 volumetric_fog_emission = Color(0.14902, 0, 0.0235294, 1)
 
+[sub_resource type="Animation" id="Animation_8sagp"]
+resource_name = "move"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovingPlatform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(87.9109, 0.257031, 8.39661), Vector3(102.358, -3.42861, 18.8666), Vector3(102.358, -3.42861, 18.8666), Vector3(87.9109, 0.257031, 8.39661)]
+}
+
+[sub_resource type="Animation" id="Animation_8aco2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovingPlatform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(87.9109, 0.257031, 8.39661)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w6uxo"]
+_data = {
+"RESET": SubResource("Animation_8aco2"),
+"move": SubResource("Animation_8sagp")
+}
+
 [node name="Dungeon" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.9109, 0.257031, 8.39661)
 script = ExtResource("1_urk0f")
 player_scene = ExtResource("2_t4pnu")
 
@@ -68,6 +122,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.088, 1.66067, -26.7334)
 
 [node name="Torch19" parent="Torches" instance=ExtResource("5_1kyur")]
 transform = Transform3D(0.326212, 0, 0.945297, 0, 1, 0, -0.945297, 0, 0.326212, 47.9798, 1.66067, 3.34954)
+
+[node name="Torch26" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-0.302902, 0, -0.953022, 0, 1, 0, 0.953022, 0, -0.302902, 47.0734, 1.66067, 5.55234)
+
+[node name="Torch28" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-0.302902, 0, -0.953022, 0, 1, 0, 0.953022, 0, -0.302902, 50.0123, 1.66067, 18.5875)
+
+[node name="Torch29" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-0.302902, 0, -0.953022, 0, 1, 0, 0.953022, 0, -0.302902, 43.3747, 1.66067, 19.2082)
+
+[node name="Torch27" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(0.953191, 0, -0.30237, 0, 1, 0, 0.30237, 0, 0.953191, 31.2463, 1.66067, 12.1202)
+
+[node name="Torch30" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(0.30237, 0, 0.953191, 0, 1, 0, -0.953191, 0, 0.30237, 36.5851, 5.16096, 31.1816)
+
+[node name="Torch31" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(0.30237, 0, 0.953191, 0, 1, 0, -0.953191, 0, 0.30237, 47.303, 5.16096, 34.6623)
 
 [node name="Torch20" parent="Torches" instance=ExtResource("5_1kyur")]
 transform = Transform3D(-0.77363, 0, 0.633637, 0, 1, 0, -0.633637, 0, -0.77363, 82.0521, 1.66067, -4.16447)
@@ -134,6 +206,21 @@ starts_lit = true
 [node name="Torch13" parent="Torches" instance=ExtResource("5_1kyur")]
 transform = Transform3D(0.324049, 0, -0.94604, 0, 1, 0, 0.94604, 0, 0.324049, 47.6178, 1.661, -57.5537)
 
+[node name="Torch32" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(0.809017, 0, -0.587785, 0, 1, 0, 0.587785, 0, 0.809017, 83.78, 1.76851, -2.48877)
+
+[node name="Torch33" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-0.587785, 0, -0.809017, 0, 1, 0, 0.809017, 0, -0.587785, 94.1938, 1.76851, -13.2784)
+
+[node name="Torch34" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, -0.809017, 119.755, 5.63417, 7.61584)
+
+[node name="Torch36" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, -0.809017, 113.587, 5.63417, 16.105)
+
+[node name="Torch35" parent="Torches" instance=ExtResource("5_1kyur")]
+transform = Transform3D(0.587785, 0, 0.809017, 0, 1, 0, -0.809017, 0, 0.587785, 104.506, 5.63417, 22.8045)
+
 [node name="Altars" type="Node3D" parent="."]
 
 [node name="PyronAltar" parent="Altars" node_paths=PackedStringArray("being_path_follow") instance=ExtResource("10_nrln7")]
@@ -149,13 +236,37 @@ curve = SubResource("Curve3D_oxh56")
 transform = Transform3D(0.999855, 0, 0, 0, 0.999846, 0, 0, 0, 0.999845, -1.38171, -0.262669, -0.00088501)
 rotation_mode = 0
 
-[node name="NanoAltar" parent="Altars" instance=ExtResource("10_nrln7")]
+[node name="NanoAltar" parent="Altars" node_paths=PackedStringArray("being_path_follow") instance=ExtResource("10_nrln7")]
 transform = Transform3D(-0.309017, 0, 0.951056, 0, 1, 0, -0.951056, 0, -0.309017, 20.4812, 0.199961, -66.7896)
 being_scene = ExtResource("8_im0wl")
+being_path_follow = NodePath("NanoPath/NanoPathFollow")
 
-[node name="WispAltar" parent="Altars" instance=ExtResource("10_nrln7")]
+[node name="NanoPath" type="Path3D" parent="Altars/NanoAltar"]
+curve = SubResource("Curve3D_us6kq")
+
+[node name="NanoPathFollow" type="PathFollow3D" parent="Altars/NanoAltar/NanoPath"]
+transform = Transform3D(0.315972, 0.517028, 0.795515, 5.96046e-08, 0.838471, -0.544946, -0.948768, 0.172188, 0.264933, 0.0263824, 1.05675, 0.0128403)
+
+[node name="MegaAltar" parent="Altars" instance=ExtResource("10_nrln7")]
 transform = Transform3D(-0.587785, 0, 0.809017, 0, 1, 0, -0.809017, 0, -0.587785, 83.6311, 0.199961, -54.0697)
 being_scene = ExtResource("9_gg1ej")
+
+[node name="WispAltar" parent="Altars" node_paths=PackedStringArray("being_path_follow") instance=ExtResource("10_nrln7")]
+transform = Transform3D(0.951056, 0, -0.309017, 0, 1, 0, 0.309017, 0, 0.951056, 49.5427, 8.15366, 7.62551)
+being_scene = ExtResource("9_gg1ej")
+being_path_follow = NodePath("WispPath/WispPathFollow")
+
+[node name="WispPath" type="Path3D" parent="Altars/WispAltar"]
+curve = SubResource("Curve3D_nlk6h")
+
+[node name="WispPathFollow" type="PathFollow3D" parent="Altars/WispAltar/WispPath"]
+transform = Transform3D(0.0385054, -0.529307, -0.847556, 0, 0.848184, -0.5297, 0.999258, 0.0203963, 0.0326597, 0.0502815, 1.09024, -0.0726757)
+
+[node name="SonicAltar" parent="Altars" instance=ExtResource("10_nrln7")]
+transform = Transform3D(0.587785, 0, 0.809017, 0, 1, 0, -0.809017, 0, 0.587785, 91.4261, 8.14385, -11.5786)
+
+[node name="WingsAltar" parent="Altars" instance=ExtResource("10_nrln7")]
+transform = Transform3D(0.587785, 0, 0.809017, 0, 1, 0, -0.809017, 0, 0.587785, 81.2778, 8.14385, 2.37064)
 
 [node name="SpookyEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_t3h81")
@@ -164,22 +275,19 @@ environment = SubResource("Environment_t3h81")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.2507, 0.207253, 7.11598)
 
 [node name="DebugSpawn" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.6098, 0.416029, -48.9497)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.9664, 0.416029, -4.36017)
 
 [node name="Sonic" parent="." instance=ExtResource("6_wl3h7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.0336, 2.19185, -18.51)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.5432, 2.19185, -20.6561)
 
 [node name="Wings" parent="." instance=ExtResource("7_ew4e8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.5273, 2.18775, -20.6743)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.5014, 2.31135, -27.5412)
 
 [node name="Nano" parent="." instance=ExtResource("8_im0wl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.9717, 2.19284, -29.5558)
 
-[node name="Nano2" parent="." instance=ExtResource("8_im0wl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.9061, 2.19284, -48.6251)
-
 [node name="Wisp" parent="." instance=ExtResource("9_gg1ej")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.4936, 2.20874, -27.4889)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.0399, 2.20874, -18.5619)
 
 [node name="MazeTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -209,3 +317,43 @@ transform = Transform3D(-0.970822, 0, -0.705343, 0, 1.2, 0, 0.705343, 0, -0.9708
 [node name="SmallRoomLever" parent="." instance=ExtResource("12_fg6xi")]
 unique_name_in_owner = true
 transform = Transform3D(-2.56929e-08, -0.587786, -0.809017, 1, -4.37114e-08, 0, -3.53633e-08, -0.809017, 0.587786, 85.7081, 2, -48.1733)
+
+[node name="Pyron" parent="." instance=ExtResource("4_l3gmt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 88.3619, 0.320704, -3.47743)
+
+[node name="Wings2" parent="." instance=ExtResource("7_ew4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.6384, 0.257032, 8.60244)
+
+[node name="Pusher" parent="." instance=ExtResource("13_8hlw0")]
+transform = Transform3D(-1.29443, 0, 0.940456, 0, 1.6, 0, -0.940456, 0, -1.29443, 103.166, 4, -4.77743)
+
+[node name="Pusher2" parent="." instance=ExtResource("13_8hlw0")]
+transform = Transform3D(-1.29443, 0, 0.940456, 0, 1.6, 0, -0.940456, 0, -1.29443, 106.329, 4, -2.47675)
+initial_delay = 2.0
+
+[node name="Pusher3" parent="." instance=ExtResource("13_8hlw0")]
+transform = Transform3D(-1.29443, 0, 0.940456, 0, 1.6, 0, -0.940456, 0, -1.29443, 109.433, 4, -0.195209)
+
+[node name="Pusher4" parent="." instance=ExtResource("13_8hlw0")]
+transform = Transform3D(-1.29443, 0, 0.940456, 0, 1.6, 0, -0.940456, 0, -1.29443, 112.535, 4, 2.0403)
+initial_delay = 2.0
+
+[node name="MovingPlatform" parent="." instance=ExtResource("14_w0l5x")]
+transform = Transform3D(-0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, -0.809017, 87.9109, 0.257031, 8.39661)
+
+[node name="Torch" parent="MovingPlatform" instance=ExtResource("5_1kyur")]
+transform = Transform3D(-8.9407e-08, 0, -1, 0, 1, 0, 1, 0, -8.9407e-08, 0.138924, 5.57772, 2.00697)
+
+[node name="MovingPlatformAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+callback_mode_process = 0
+libraries = {
+"": SubResource("AnimationLibrary_w6uxo")
+}
+
+[node name="MovingPlatformLever" parent="." instance=ExtResource("12_fg6xi")]
+unique_name_in_owner = true
+transform = Transform3D(3.53633e-08, 0.809017, 0.587785, 1, -4.37114e-08, 0, 2.56929e-08, 0.587785, -0.809017, 82.8837, 2.08084, -1.27666)
+
+[node name="Sonic2" parent="." instance=ExtResource("6_wl3h7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.7124, 0.257032, -4.91047)

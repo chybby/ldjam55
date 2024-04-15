@@ -35,4 +35,5 @@ func on_pick_up(player: Player) -> void:
 func on_drop(player: Player) -> void:
     player.set_player_scale(1)
     scale = Vector3.ONE
-    global_position = home.global_position
+    if home != null:
+        global_position = home.global_position
