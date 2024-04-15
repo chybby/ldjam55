@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ef5dqqevmxcn"]
+[gd_scene load_steps=17 format=3 uid="uid://ef5dqqevmxcn"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_jcq7f"]
 [ext_resource type="PackedScene" uid="uid://dionueqr7qrkx" path="res://scenes/game_objects/levels/dungeon.tscn" id="2_igwo7"]
@@ -7,7 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://d17qip0d82p5n" path="res://scenes/ui/hud.tscn" id="4_r0h2i"]
 [ext_resource type="PackedScene" uid="uid://hvk5n6w6tmr5" path="res://scenes/ui/end_game.tscn" id="6_b33jp"]
 [ext_resource type="AudioStream" uid="uid://cwrh36hx7lea1" path="res://assets/sounds/bgmusic.mp3" id="6_pqxox"]
-[ext_resource type="PackedScene" path="res://scenes/ui/settings.tscn" id="12_yt68s"]
+[ext_resource type="AudioStream" uid="uid://drwnftlsvdt2o" path="res://assets/sounds/intro1.mp3" id="6_txjt8"]
+[ext_resource type="AudioStream" uid="uid://dh6op3i84caeo" path="res://assets/sounds/intro2.mp3" id="7_1utsk"]
+[ext_resource type="AudioStream" uid="uid://m8nkis6wc4yv" path="res://assets/sounds/intro3.mp3" id="8_6tg0d"]
+[ext_resource type="AudioStream" uid="uid://dl3tvcjeiqdjn" path="res://assets/sounds/intro4.mp3" id="9_61aql"]
+[ext_resource type="AudioStream" uid="uid://c0nh368oirmoj" path="res://assets/sounds/intro5.mp3" id="10_rc2dr"]
+[ext_resource type="AudioStream" uid="uid://cfvkq88l6332" path="res://assets/sounds/intro6.mp3" id="11_d4mwd"]
+[ext_resource type="AudioStream" uid="uid://bwddyjew1s12b" path="res://assets/sounds/intro7.mp3" id="12_w1p8o"]
+[ext_resource type="PackedScene" uid="uid://l660nwqrb5sp" path="res://scenes/ui/settings.tscn" id="12_yt68s"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_j2shs"]
 viewport_path = NodePath("WorldViewport")
@@ -55,6 +62,7 @@ process_mode = 1
 visible = false
 layout_mode = 1
 dialogue_lines = Array[String](["Hello? Is this thing on?", "No no no, don't bother looking around. I'm channelling my thoughts directly into your head from the exam invigilation chamber.", "It's a technique you may be able to learn next semester, assuming you are able to pass this summoning exam.", "There are five minor spirits you will need to summon today. Once they are all gathered in the central chamber you will be able to begin the final ritual.", "Each spirit bestows upon you magical powers while you are carrying them. Use these wisely to navigate the examination chambers.", "Oh, one more thing...", " I hope you aren't afraid of the dark. Heh heh heh ~"])
+dialogue_audios = Array[AudioStream]([ExtResource("6_txjt8"), ExtResource("7_1utsk"), ExtResource("8_6tg0d"), ExtResource("9_61aql"), ExtResource("10_rc2dr"), ExtResource("11_d4mwd"), ExtResource("12_w1p8o")])
 
 [node name="EndGame" parent="GUI" instance=ExtResource("6_b33jp")]
 unique_name_in_owner = true

@@ -33,10 +33,12 @@ func on_interact(held_item: Holdable) -> void:
 
 
 func on_pick_up(player: Player) -> void:
+    player.footstep_audio_player.set_small_speed()
     player.set_player_scale(0.2)
     player.position.y += 0.8
 
 func on_drop(player: Player) -> void:
+    player.footstep_audio_player.set_walk_speed()
     player.set_player_scale(1)
     scale = Vector3.ONE
     if home != null:

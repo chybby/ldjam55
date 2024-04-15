@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/game_objects/levels/dungeon.gd" id="1_urk0f"]
 [ext_resource type="PackedScene" uid="uid://cwav8ma78d78y" path="res://scenes/game_objects/player/player.tscn" id="2_t4pnu"]
-[ext_resource type="PackedScene" uid="uid://b2e504iqpfjf1" path="res://scenes/game_objects/levels/dungeon_model.tscn" id="3_6345u"]
+[ext_resource type="PackedScene" path="res://scenes/game_objects/levels/dungeon_model.tscn" id="3_6345u"]
 [ext_resource type="PackedScene" uid="uid://cmvtcc3g0xbgk" path="res://scenes/game_objects/beings/pyron/pyron.tscn" id="4_l3gmt"]
 [ext_resource type="PackedScene" uid="uid://y8bs8p8f47lu" path="res://scenes/game_objects/torch/torch.tscn" id="5_1kyur"]
 [ext_resource type="PackedScene" uid="uid://0mgktkmtad83" path="res://scenes/game_objects/beings/sonic/sonic.tscn" id="6_wl3h7"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1t0jfr15uble"]
+[gd_scene load_steps=15 format=3 uid="uid://c1t0jfr15uble"]
 
 [ext_resource type="PackedScene" uid="uid://dtvwfrlyr3hns" path="res://assets/altar.blend" id="1_vc38n"]
 [ext_resource type="Script" path="res://scenes/game_objects/altar/altar.gd" id="1_xwqxa"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://lwctoxfgqxdd" path="res://scenes/game_objects/candle/candle.tscn" id="4_xh216"]
 [ext_resource type="PackedScene" uid="uid://c5nstwfej32oa" path="res://scenes/components/interactable/interactable.tscn" id="5_ggy7s"]
 [ext_resource type="Shader" path="res://scenes/game_objects/torch/torch.gdshader" id="7_fqy36"]
+[ext_resource type="AudioStream" uid="uid://bjomo2n4dla0d" path="res://assets/sounds/read.mp3" id="8_jmw7m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5wds"]
 size = Vector3(0.650921, 0.114994, 0.653046)
@@ -87,3 +88,6 @@ light_energy = 8.0
 light_specular = 4.0
 spot_range = 6.0
 spot_angle = 88.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_jmw7m")

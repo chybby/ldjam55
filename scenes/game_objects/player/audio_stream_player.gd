@@ -15,6 +15,11 @@ func _ready() -> void:
     next_step_timer.timeout.connect(on_next_step_timer_timeout)
 
 
+func set_small_speed() -> void:
+    playback_pitch_scale = 2
+    next_step_timer.wait_time = 0.8
+
+
 func set_sprint_speed() -> void:
     playback_pitch_scale = 1.5
     next_step_timer.wait_time = 0.8 / 2.5
