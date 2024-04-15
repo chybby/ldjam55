@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/game_objects/levels/dungeon.gd" id="1_urk0f"]
 [ext_resource type="PackedScene" uid="uid://cwav8ma78d78y" path="res://scenes/game_objects/player/player.tscn" id="2_t4pnu"]
-[ext_resource type="PackedScene" path="res://scenes/game_objects/levels/dungeon_model.tscn" id="3_6345u"]
+[ext_resource type="PackedScene" uid="uid://b2e504iqpfjf1" path="res://scenes/game_objects/levels/dungeon_model.tscn" id="3_6345u"]
 [ext_resource type="PackedScene" uid="uid://cmvtcc3g0xbgk" path="res://scenes/game_objects/beings/pyron/pyron.tscn" id="4_l3gmt"]
 [ext_resource type="PackedScene" uid="uid://y8bs8p8f47lu" path="res://scenes/game_objects/torch/torch.tscn" id="5_1kyur"]
 [ext_resource type="PackedScene" uid="uid://0mgktkmtad83" path="res://scenes/game_objects/beings/sonic/sonic.tscn" id="6_wl3h7"]
@@ -456,17 +456,17 @@ unique_name_in_owner = true
 transform = Transform3D(-2.56929e-08, -0.587786, -0.809017, 1, -4.37114e-08, 0, -3.53633e-08, -0.809017, 0.587786, 85.7081, 2, -48.1733)
 
 [node name="Pusher" parent="." instance=ExtResource("13_8hlw0")]
-transform = Transform3D(-1.29443, 0, 0.940456, 0, 1.6, 0, -0.940456, 0, -1.29443, 103.166, 4, -4.77743)
+transform = Transform3D(-1.29443, 0, 0.940456, 0, 1.6, 0, -0.940456, 0, -1.29443, 103.156, 4, -4.76404)
 
 [node name="Pusher2" parent="." instance=ExtResource("13_8hlw0")]
-transform = Transform3D(-1.29443, 0, 0.940456, 0, 1.6, 0, -0.940456, 0, -1.29443, 106.329, 4, -2.47675)
+transform = Transform3D(-1.29443, 0, 0.940456, 0, 1.6, 0, -0.940456, 0, -1.29443, 106.319, 4, -2.46336)
 initial_delay = 2.0
 
 [node name="Pusher3" parent="." instance=ExtResource("13_8hlw0")]
-transform = Transform3D(-1.29443, 0, 0.940456, 0, 1.6, 0, -0.940456, 0, -1.29443, 109.433, 4, -0.195209)
+transform = Transform3D(-1.29443, 0, 0.940456, 0, 1.6, 0, -0.940456, 0, -1.29443, 109.423, 4, -0.181818)
 
 [node name="Pusher4" parent="." instance=ExtResource("13_8hlw0")]
-transform = Transform3D(-1.29443, 0, 0.940456, 0, 1.6, 0, -0.940456, 0, -1.29443, 112.535, 4, 2.0403)
+transform = Transform3D(-1.29443, 0, 0.940456, 0, 1.6, 0, -0.940456, 0, -1.29443, 112.525, 4, 2.05369)
 initial_delay = 2.0
 
 [node name="MovingPlatform" parent="." instance=ExtResource("14_w0l5x")]

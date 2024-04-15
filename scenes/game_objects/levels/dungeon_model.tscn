@@ -35,8 +35,20 @@ _data = {
 script = ExtResource("2_04jg2")
 
 [node name="Skeleton3D" parent="Tentacles/Armature_001" index="0"]
-bones/0/rotation = Quaternion(1.22091e-07, 1.2041e-07, -0.718473, 0.695555)
+bones/0/rotation = Quaternion(-0.423241, -0.384589, -0.581371, 0.578762)
+bones/1/rotation = Quaternion(-0.00218687, -0.00842089, 0.0274919, 0.999584)
+bones/2/rotation = Quaternion(0.0391932, -0.00898515, 0.00575937, 0.999175)
+bones/3/rotation = Quaternion(0.0758831, -0.00938546, -0.0166771, 0.996933)
+bones/4/rotation = Quaternion(0.104274, -0.00948606, -0.0373024, 0.993804)
+bones/5/rotation = Quaternion(0.121594, -0.00906049, -0.0538457, 0.991077)
+bones/6/rotation = Quaternion(0.126171, -0.00798169, -0.0644331, 0.989882)
+bones/7/rotation = Quaternion(0.117704, -0.00636347, -0.067763, 0.990714)
+bones/8/rotation = Quaternion(0.0973518, -0.0045542, -0.0632464, 0.993228)
+bones/9/rotation = Quaternion(0.0675049, -0.00299572, -0.0510692, 0.996407)
+bones/10/rotation = Quaternion(0.0313789, -0.00116813, -0.0599335, 0.997708)
+bones/11/position = Vector3(9.78217, 6.47845, 4.64163)
 bones/11/rotation = Quaternion(2.06671e-07, 1.96829e-07, -0.746638, 0.665231)
+bones/12/rotation = Quaternion(-0.374771, -0.424419, -0.592946, 0.572565)
 bones/12/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="Tentacles/Armature_002" index="0"]
@@ -52,20 +64,9 @@ bones/11/scale = Vector3(1, 1, 1)
 bones/12/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="Tentacles/Armature_004" index="0"]
-bones/0/rotation = Quaternion(-0.423241, -0.384589, -0.581371, 0.578763)
-bones/1/rotation = Quaternion(-0.00218694, -0.0084209, 0.027492, 0.999584)
-bones/2/rotation = Quaternion(0.0391931, -0.00898518, 0.00575945, 0.999175)
-bones/3/rotation = Quaternion(0.0758831, -0.00938548, -0.0166771, 0.996933)
-bones/4/rotation = Quaternion(0.104274, -0.0094861, -0.0373024, 0.993804)
-bones/5/rotation = Quaternion(0.121594, -0.00906053, -0.0538458, 0.991077)
-bones/6/rotation = Quaternion(0.126171, -0.00798173, -0.0644333, 0.989882)
-bones/7/rotation = Quaternion(0.117704, -0.00636347, -0.0677632, 0.990714)
-bones/8/rotation = Quaternion(0.0973519, -0.00455419, -0.0632466, 0.993228)
-bones/9/rotation = Quaternion(0.0675051, -0.00299572, -0.0510694, 0.996407)
-bones/10/rotation = Quaternion(0.0626944, -0.00233396, -0.0919395, 0.993786)
-bones/11/position = Vector3(3.84694, 13.5317, 9.28326)
+bones/0/rotation = Quaternion(1.2124e-07, 1.20886e-07, -0.718473, 0.695555)
 bones/11/rotation = Quaternion(2.01311e-07, 1.96478e-07, -0.746638, 0.665231)
-bones/12/rotation = Quaternion(-0.617822, -0.699668, -0.259149, 0.248199)
+bones/12/rotation = Quaternion(3.92594e-08, 7.06082e-08, -0.71834, 0.695692)
 bones/12/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="Tentacles/Armature_005" index="0"]
