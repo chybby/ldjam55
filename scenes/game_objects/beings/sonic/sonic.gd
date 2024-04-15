@@ -27,6 +27,8 @@ func on_interact(held_item: Holdable) -> void:
 func on_pick_up(player: Player) -> void:
     saved_walk_speed = player.walk_speed
     player.walk_speed = 20
+    player.footstep_audio_player.set_sprint_speed()
 
 func on_drop(player: Player) -> void:
     player.walk_speed = saved_walk_speed
+    player.footstep_audio_player.set_walk_speed()

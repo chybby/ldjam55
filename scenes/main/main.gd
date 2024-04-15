@@ -16,7 +16,10 @@ func _ready() -> void:
     Input.set_use_accumulated_input(false)
     Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+    var sfx_bus_idx = AudioServer.get_bus_index("SFX")
+    AudioServer.set_bus_mute(sfx_bus_idx, true)
     await title.dismissed
+    AudioServer.set_bus_mute(sfx_bus_idx, false)
 
     await dialogue.show_dialogue(test_dialogue)
 
