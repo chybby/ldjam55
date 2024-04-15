@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/game_objects/beings/wisp/wisp.gd" id="1_bufnr"]
 [ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="2_c3ygl"]
-[ext_resource type="Script" path="res://scenes/components/holdable/holdable.gd" id="3_mome4"]
+[ext_resource type="PackedScene" uid="uid://bklu42pxrihc2" path="res://scenes/components/holdable/holdable.tscn" id="3_fhpp0"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_8vyft"]
 top_radius = 0.11
@@ -36,9 +36,6 @@ script = ExtResource("2_c3ygl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213783, 0)
 shape = SubResource("SphereShape3D_g3cm4")
 
-[node name="Holdable" type="Node" parent="."]
-script = ExtResource("3_mome4")
-
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.179755, 0)
 light_color = Color(0, 0.796078, 0.847059, 1)
@@ -46,3 +43,5 @@ light_energy = 1.5
 shadow_enabled = true
 omni_range = 4.0
 omni_attenuation = 1.27455
+
+[node name="Holdable" parent="." instance=ExtResource("3_fhpp0")]

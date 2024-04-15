@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/game_objects/beings/wings/wings.gd" id="1_2jclb"]
 [ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="2_lt8h8"]
-[ext_resource type="Script" path="res://scenes/components/holdable/holdable.gd" id="3_ah1xd"]
+[ext_resource type="PackedScene" uid="uid://bklu42pxrihc2" path="res://scenes/components/holdable/holdable.tscn" id="3_cb3pg"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_o13lc"]
 size = Vector3(0.4, 0.4, 0.4)
@@ -34,5 +34,4 @@ script = ExtResource("2_lt8h8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213783, 0)
 shape = SubResource("SphereShape3D_g3cm4")
 
-[node name="Holdable" type="Node" parent="."]
-script = ExtResource("3_ah1xd")
+[node name="Holdable" parent="." instance=ExtResource("3_cb3pg")]

@@ -1,9 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://y8bs8p8f47lu"]
+[gd_scene load_steps=21 format=3 uid="uid://y8bs8p8f47lu"]
 
 [ext_resource type="PackedScene" uid="uid://1wxnafhrkyc7" path="res://assets/torch.blend" id="1_n7tf3"]
 [ext_resource type="Script" path="res://scenes/game_objects/torch/torch.gd" id="1_qt3n4"]
 [ext_resource type="PackedScene" uid="uid://c5nstwfej32oa" path="res://scenes/components/interactable/interactable.tscn" id="2_iec0l"]
 [ext_resource type="Shader" path="res://scenes/game_objects/torch/torch.gdshader" id="4_vp7le"]
+[ext_resource type="AudioStream" uid="uid://dlsdb8dvsj1el" path="res://assets/sounds/torch_light1.mp3" id="5_fccvo"]
+[ext_resource type="AudioStream" uid="uid://b1stu1ygq2knb" path="res://assets/sounds/torch_light2.mp3" id="6_0pktb"]
+[ext_resource type="AudioStream" uid="uid://c2y0yqar63xvi" path="res://assets/sounds/torch_light3.mp3" id="7_waeqk"]
+[ext_resource type="AudioStream" uid="uid://b88wxnqno2yi2" path="res://assets/sounds/torch_light4.mp3" id="8_sfq4r"]
+[ext_resource type="AudioStream" uid="uid://bu1qc70tou8ku" path="res://assets/sounds/fire_crackle.mp3" id="9_wx0hq"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vhgh2"]
 height = 0.6
@@ -57,6 +62,18 @@ shader = ExtResource("4_vp7le")
 material = SubResource("ShaderMaterial_jk4fj")
 size = Vector3(0.05, 0.05, 0.05)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_048nr"]
+random_pitch = 1.1
+streams_count = 4
+stream_0/stream = ExtResource("5_fccvo")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_0pktb")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("7_waeqk")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("8_sfq4r")
+stream_3/weight = 1.0
+
 [node name="Torch" type="Node3D"]
 script = ExtResource("1_qt3n4")
 
@@ -87,3 +104,18 @@ lifetime = 6.0
 preprocess = 1.0
 process_material = SubResource("ParticleProcessMaterial_h37pr")
 draw_pass_1 = SubResource("BoxMesh_sofpu")
+
+[node name="LightTorchAudioPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_048nr")
+attenuation_model = 3
+max_distance = 10.0
+bus = &"SFX"
+
+[node name="AmbientAudioPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_wx0hq")
+attenuation_model = 2
+volume_db = -5.0
+unit_size = 3.0
+max_db = -3.0
+max_distance = 3.0
+bus = &"SFX"

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/game_objects/beings/nano/nano.gd" id="1_fse7i"]
 [ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="2_5al7x"]
-[ext_resource type="Script" path="res://scenes/components/holdable/holdable.gd" id="3_68ql8"]
+[ext_resource type="PackedScene" uid="uid://bklu42pxrihc2" path="res://scenes/components/holdable/holdable.tscn" id="3_8jwgo"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_tpsdg"]
 inner_radius = 0.081
@@ -35,5 +35,4 @@ script = ExtResource("2_5al7x")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213783, 0)
 shape = SubResource("SphereShape3D_g3cm4")
 
-[node name="Holdable" type="Node" parent="."]
-script = ExtResource("3_68ql8")
+[node name="Holdable" parent="." instance=ExtResource("3_8jwgo")]

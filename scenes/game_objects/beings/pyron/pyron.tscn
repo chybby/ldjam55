@@ -1,9 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmvtcc3g0xbgk"]
+[gd_scene load_steps=17 format=3 uid="uid://cmvtcc3g0xbgk"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/beings/pyron/pyron.gd" id="1_34j2p"]
 [ext_resource type="PackedScene" uid="uid://7142jecov43c" path="res://assets/lamp.blend" id="2_1qqr5"]
 [ext_resource type="PackedScene" uid="uid://c5nstwfej32oa" path="res://scenes/components/interactable/interactable.tscn" id="3_e6v17"]
 [ext_resource type="PackedScene" uid="uid://bklu42pxrihc2" path="res://scenes/components/holdable/holdable.tscn" id="4_ebw4q"]
+[ext_resource type="AudioStream" uid="uid://u0rl5jm7b1bl" path="res://assets/sounds/lamp_pickup1.mp3" id="5_limp7"]
+[ext_resource type="AudioStream" uid="uid://skudlk23kedg" path="res://assets/sounds/lamp_pickup2.mp3" id="6_naxhi"]
+[ext_resource type="AudioStream" uid="uid://b4ai3m7vwwled" path="res://assets/sounds/lamp_pickup3.mp3" id="7_ku23d"]
+[ext_resource type="AudioStream" uid="uid://dloac2f1q2gg1" path="res://assets/sounds/lamp_pickup4.mp3" id="8_pth6q"]
+[ext_resource type="AudioStream" uid="uid://c8b6hv628c1kc" path="res://assets/sounds/lamp_putdown1.mp3" id="9_3osrv"]
+[ext_resource type="AudioStream" uid="uid://j8ymlqbjivfw" path="res://assets/sounds/lamp_putdown2.mp3" id="10_tmrln"]
+[ext_resource type="AudioStream" uid="uid://b337xbi6h3vh1" path="res://assets/sounds/lamp_putdown3.mp3" id="11_hd266"]
+[ext_resource type="AudioStream" uid="uid://beo4ianvvd8d8" path="res://assets/sounds/lamp_putdown4.mp3" id="12_qhny7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kph6i"]
 size = Vector3(0.35, 0.45, 0.3)
@@ -12,7 +20,30 @@ size = Vector3(0.35, 0.45, 0.3)
 radius = 0.179256
 height = 0.473487
 
-[node name="Pyron" type="StaticBody3D" groups=["being"]]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_blexq"]
+streams_count = 4
+stream_0/stream = ExtResource("5_limp7")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_naxhi")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("7_ku23d")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("8_pth6q")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_15105"]
+streams_count = 4
+stream_0/stream = ExtResource("9_3osrv")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("10_tmrln")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("11_hd266")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("12_qhny7")
+stream_3/weight = 1.0
+
+[node name="Pyron" type="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_34j2p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -20,7 +51,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.233857, 0)
 shape = SubResource("BoxShape3D_kph6i")
 
 [node name="Model" parent="." instance=ExtResource("2_1qqr5")]
-transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, 0.0388013, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0388013, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.241, 0)
@@ -35,3 +66,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22307, 0)
 shape = SubResource("CapsuleShape3D_47uyy")
 
 [node name="Holdable" parent="." instance=ExtResource("4_ebw4q")]
+pick_up_audio_stream = SubResource("AudioStreamRandomizer_blexq")
+drop_audio_stream = SubResource("AudioStreamRandomizer_15105")

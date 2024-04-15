@@ -6,9 +6,6 @@
 [ext_resource type="Script" path="res://scenes/components/hurtbox3d/hurtbox3d.gd" id="3_5hv6m"]
 [ext_resource type="AudioStream" uid="uid://d1q1ojef2d5eb" path="res://assets/sounds/footstep2.mp3" id="3_37asq"]
 [ext_resource type="Shader" path="res://scenes/game_objects/torch/torch.gdshader" id="3_qgpys"]
-[ext_resource type="AudioStream" uid="uid://cyem52duh3y24" path="res://assets/sounds/footstep3.mp3" id="4_k1bhd"]
-[ext_resource type="Script" path="res://scenes/game_objects/player/jump_audio_player.gd" id="7_13eax"]
-[ext_resource type="AudioStream" uid="uid://dkk10u15o1n4d" path="res://assets/sounds/footstep6.mp3" id="7_hlqlx"]
 [ext_resource type="AudioStream" uid="uid://fl5wdppkk40h" path="res://assets/sounds/footstep8.mp3" id="9_1nla3"]
 [ext_resource type="AudioStream" uid="uid://ccg0ca863actq" path="res://assets/sounds/footstep9.mp3" id="10_jt2f5"]
 [ext_resource type="AudioStream" uid="uid://cfj3tovqn2plb" path="res://assets/sounds/footstep10.mp3" id="11_r44mu"]
@@ -198,6 +195,27 @@ _data = {
 "move": SubResource("Animation_h004k")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xwyq5"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_37asq")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_wxvfb"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e8ad2"]
+random_pitch = 1.1
+random_volume_offset_db = 2.0
+streams_count = 4
+stream_0/stream = ExtResource("9_1nla3")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("10_jt2f5")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("11_r44mu")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("12_rd5ly")
+stream_3/weight = 1.0
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.907112, 0)
 collision_layer = 2
@@ -270,17 +288,21 @@ libraries = {
 
 [node name="JumpAudioPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("7_hlqlx")
-script = ExtResource("7_13eax")
-jump_sounds = Array[AudioStream]([ExtResource("3_37asq"), ExtResource("4_k1bhd")])
+stream = SubResource("AudioStreamRandomizer_xwyq5")
+bus = &"SFX"
 
 [node name="FootstepAudioPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("7_hlqlx")
-pitch_scale = 0.96
+stream = SubResource("AudioStreamPolyphonic_wxvfb")
+autoplay = true
+max_polyphony = 32
+bus = &"SFX"
 script = ExtResource("17_rhsy1")
-footstep_sounds = Array[AudioStream]([ExtResource("9_1nla3"), ExtResource("10_jt2f5"), ExtResource("11_r44mu"), ExtResource("12_rd5ly")])
+footstep_sounds = SubResource("AudioStreamRandomizer_e8ad2")
 
-[node name="Timer" type="Timer" parent="FootstepAudioPlayer"]
+[node name="StartTimer" type="Timer" parent="FootstepAudioPlayer"]
 wait_time = 0.25
 one_shot = true
+
+[node name="NextStepTimer" type="Timer" parent="FootstepAudioPlayer"]
+wait_time = 0.8

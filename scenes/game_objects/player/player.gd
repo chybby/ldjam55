@@ -101,8 +101,7 @@ func _physics_process(delta: float) -> void:
             footstep_audio_player.stop_footsteps()
         target_velocity.y = 0
         if jumped:
-
-            jump_audio_player.play_jump()
+            jump_audio_player.play()
             target_velocity.y = jump_strength
 
     jumped = false
