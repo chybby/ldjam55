@@ -6,17 +6,6 @@ extends CanvasLayer
 @onready var world_viewport: SubViewport = %WorldViewport
 
 
-var test_dialogue: Array[String] = [
-    "MWAHAHAHAHELLO",
-    #"Time for your examination...",
-    #"Buckle up kiddo",
-    #"It's gonna be fuckin CRAZY",
-    #"You're gonna summon the SHIT outta this spooky town tonight!!!",
-    #"glhf",
-]
-
-
-
 func _ready() -> void:
     GameEvents.finished_game.connect(on_finished_game)
 
@@ -29,7 +18,7 @@ func _ready() -> void:
     GameEvents.emit_started_game()
     AudioServer.set_bus_mute(sfx_bus_idx, false)
 
-    await dialogue.show_dialogue(test_dialogue)
+    await dialogue.show_dialogue()
 
 
 func _unhandled_input(event):

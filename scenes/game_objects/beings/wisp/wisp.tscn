@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjutl3fo7aow2"]
+[gd_scene load_steps=8 format=3 uid="uid://bjutl3fo7aow2"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/beings/wisp/wisp.gd" id="1_bufnr"]
 [ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="2_c3ygl"]
 [ext_resource type="PackedScene" uid="uid://bklu42pxrihc2" path="res://scenes/components/holdable/holdable.tscn" id="3_fhpp0"]
+[ext_resource type="AudioStream" uid="uid://ch1tybm71n11u" path="res://assets/sounds/wisp_up.mp3" id="4_mget7"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_8vyft"]
 top_radius = 0.11
@@ -45,3 +46,4 @@ omni_range = 4.0
 omni_attenuation = 1.27455
 
 [node name="Holdable" parent="." instance=ExtResource("3_fhpp0")]
+pick_up_audio_stream = ExtResource("4_mget7")

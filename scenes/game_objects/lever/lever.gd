@@ -3,7 +3,7 @@ extends Node3D
 signal was_pulled
 
 @onready var interactable: Interactable = $Interactable
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = $AnimationPlayerEditable
 
 var is_pulled := false
 
@@ -18,6 +18,7 @@ func pull_lever() -> void:
     animation_player.play("PullLever")
     await animation_player.animation_finished
     was_pulled.emit()
+    #TODO: reset lever only once gate has gone back up?
     await get_tree().create_timer(1).timeout
     animation_player.play("ResetLever")
     await animation_player.animation_finished

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dionueqr7qrkx"]
+[gd_scene load_steps=31 format=3 uid="uid://dionueqr7qrkx"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/levels/dungeon.gd" id="1_urk0f"]
 [ext_resource type="PackedScene" uid="uid://cwav8ma78d78y" path="res://scenes/game_objects/player/player.tscn" id="2_t4pnu"]
@@ -13,8 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://ce8iwsmlv468s" path="res://scenes/game_objects/gate/gate.tscn" id="11_omfjb"]
 [ext_resource type="PackedScene" uid="uid://fsi78ui2tshi" path="res://scenes/game_objects/lever/lever.tscn" id="12_fg6xi"]
 [ext_resource type="PackedScene" uid="uid://dldol1ja4gcyr" path="res://scenes/game_objects/pusher/pusher.tscn" id="13_8hlw0"]
+[ext_resource type="AudioStream" uid="uid://bi50c01omt0x4" path="res://assets/sounds/time_tick.mp3" id="13_xo621"]
 [ext_resource type="PackedScene" uid="uid://oxoulj6pucl7" path="res://scenes/game_objects/moving_platform/moving_platform.tscn" id="14_w0l5x"]
-[ext_resource type="PackedScene" uid="uid://colmfysd6u5ua" path="res://scenes/game_objects/ritual_book.tscn" id="15_rm16w"]
+[ext_resource type="PackedScene" path="res://scenes/game_objects/ritual_book.tscn" id="15_rm16w"]
 [ext_resource type="PackedScene" uid="uid://c7rmxr1viqfp" path="res://scenes/game_objects/megaphone/megaphone.tscn" id="16_q33ok"]
 
 [sub_resource type="Environment" id="Environment_t3h81"]
@@ -78,6 +79,21 @@ _data = {
 }
 point_count = 22
 
+[sub_resource type="Animation" id="Animation_8aco2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovingPlatform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(87.9109, 0.257031, 8.39661)]
+}
+
 [sub_resource type="Animation" id="Animation_8sagp"]
 resource_name = "move"
 length = 15.0
@@ -94,25 +110,71 @@ tracks/0/keys = {
 "values": [Vector3(87.9109, 0.257031, 8.39661), Vector3(102.358, -3.42861, 18.8666), Vector3(102.358, -3.42861, 18.8666), Vector3(87.9109, 0.257031, 8.39661)]
 }
 
-[sub_resource type="Animation" id="Animation_8aco2"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w6uxo"]
+_data = {
+"RESET": SubResource("Animation_8aco2"),
+"move": SubResource("Animation_8sagp")
+}
+
+[sub_resource type="Animation" id="Animation_vwaa2"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MovingPlatform:position")
+tracks/0/path = NodePath("MazeTimeTickAudioPlayer:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MazeTimeTickAudioPlayer:pitch_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(87.9109, 0.257031, 8.39661)]
+"values": [1.0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_w6uxo"]
+[sub_resource type="Animation" id="Animation_gjucr"]
+resource_name = "time_tick"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MazeTimeTickAudioPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MazeTimeTickAudioPlayer:pitch_scale")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1.0, 0.8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gi764"]
 _data = {
-"RESET": SubResource("Animation_8aco2"),
-"move": SubResource("Animation_8sagp")
+"RESET": SubResource("Animation_vwaa2"),
+"time_tick": SubResource("Animation_gjucr")
 }
 
 [node name="Dungeon" type="Node3D"]
@@ -347,7 +409,7 @@ transform = Transform3D(1.36309e-08, 0.311838, 0.950136, 1, -4.37114e-08, -2.440
 
 [node name="MazeBackLever" parent="." instance=ExtResource("12_fg6xi")]
 unique_name_in_owner = true
-transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 23.8905, 2, -29.9535)
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 23.89, 2, -29.953)
 
 [node name="MazeBackGate" parent="." instance=ExtResource("11_omfjb")]
 unique_name_in_owner = true
@@ -394,3 +456,13 @@ transform = Transform3D(3.53633e-08, 0.809017, 0.587785, 1, -4.37114e-08, 0, 2.5
 
 [node name="RitualBook" parent="." instance=ExtResource("15_rm16w")]
 transform = Transform3D(-0.4, 0, -3.49691e-08, 0, 0.4, 0, 3.49691e-08, 0, -0.4, 50.1739, 1.15747, -24.0003)
+
+[node name="MazeTimeTickAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_xo621")
+volume_db = -4.0
+bus = &"SFX_dry"
+
+[node name="MazeTimeTickAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gi764")
+}
