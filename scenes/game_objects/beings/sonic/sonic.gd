@@ -3,6 +3,7 @@ extends StaticBody3D
 @onready var interactable: Interactable = $Interactable
 @onready var holdable: Holdable = $Holdable
 
+
 var saved_walk_speed: float = 0.0
 
 

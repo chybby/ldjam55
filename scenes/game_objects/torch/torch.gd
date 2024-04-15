@@ -5,6 +5,8 @@ extends Node3D
 @onready var interactable: Interactable = $Interactable
 @onready var omni_light_3d: OmniLight3D = $OmniLight3D
 @onready var fire_particles: GPUParticles3D = $FireParticles
+@onready var light_torch_audio_player: AudioStreamPlayer3D = $LightTorchAudioPlayer
+@onready var ambient_audio_player: AudioStreamPlayer3D = $AmbientAudioPlayer
 
 var lit := false
 
@@ -12,6 +14,7 @@ var lit := false
 func _ready() -> void:
     interactable.was_interacted_with.connect(on_interact)
     interactable.was_pondered_while_holding.connect(on_ponder)
+
     if starts_lit:
         light_torch()
 
@@ -19,6 +22,8 @@ func _ready() -> void:
 func light_torch() -> void:
     omni_light_3d.visible = true
     fire_particles.emitting = true
+    light_torch_audio_player.play()
+    ambient_audio_player.play()
     lit = true
 
 

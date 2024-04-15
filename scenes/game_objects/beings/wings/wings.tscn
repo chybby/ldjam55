@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt43xo5h61ymm"]
+[gd_scene load_steps=11 format=3 uid="uid://dt43xo5h61ymm"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/beings/wings/wings.gd" id="1_2jclb"]
 [ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="2_lt8h8"]
-[ext_resource type="Script" path="res://scenes/components/holdable/holdable.gd" id="3_ah1xd"]
+[ext_resource type="PackedScene" uid="uid://bklu42pxrihc2" path="res://scenes/components/holdable/holdable.tscn" id="3_ks1lk"]
+[ext_resource type="AudioStream" uid="uid://dd00xqi466kel" path="res://assets/sounds/float_up1.mp3" id="4_hxxtv"]
+[ext_resource type="AudioStream" uid="uid://bwq0ij82hc7i8" path="res://assets/sounds/float_down1.mp3" id="5_7i1d1"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_o13lc"]
 size = Vector3(0.4, 0.4, 0.4)
@@ -12,6 +14,18 @@ radius = 0.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g3cm4"]
 radius = 0.2
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_r7g67"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_hxxtv")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s1ddd"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("5_7i1d1")
+stream_0/weight = 1.0
 
 [node name="Wings" type="StaticBody3D"]
 collision_mask = 0
@@ -34,5 +48,6 @@ script = ExtResource("2_lt8h8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213783, 0)
 shape = SubResource("SphereShape3D_g3cm4")
 
-[node name="Holdable" type="Node" parent="."]
-script = ExtResource("3_ah1xd")
+[node name="Holdable" parent="." instance=ExtResource("3_ks1lk")]
+pick_up_audio_stream = SubResource("AudioStreamRandomizer_r7g67")
+drop_audio_stream = SubResource("AudioStreamRandomizer_s1ddd")

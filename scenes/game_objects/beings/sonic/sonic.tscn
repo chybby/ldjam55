@@ -1,8 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://0mgktkmtad83"]
+[gd_scene load_steps=14 format=3 uid="uid://0mgktkmtad83"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/beings/sonic/sonic.gd" id="1_iymto"]
 [ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="2_n66sq"]
-[ext_resource type="Script" path="res://scenes/components/holdable/holdable.gd" id="3_1qexs"]
+[ext_resource type="PackedScene" uid="uid://bklu42pxrihc2" path="res://scenes/components/holdable/holdable.tscn" id="3_w1kpf"]
+[ext_resource type="AudioStream" uid="uid://cu6v3i23lyere" path="res://assets/sounds/faster_up1.mp3" id="4_fa45v"]
+[ext_resource type="AudioStream" uid="uid://dxs8behvnkpef" path="res://assets/sounds/faster_up2.mp3" id="5_8g7t1"]
+[ext_resource type="AudioStream" uid="uid://bvllqwlotshln" path="res://assets/sounds/faster_down1.mp3" id="6_q8lp0"]
+[ext_resource type="AudioStream" uid="uid://cugup0267gbp7" path="res://assets/sounds/faster_down2.mp3" id="7_yotku"]
+[ext_resource type="AudioStream" uid="uid://c282rqndj2n1v" path="res://assets/sounds/faster_down3.mp3" id="8_644cn"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_du4xi"]
 radius = 0.2
@@ -13,6 +18,23 @@ radius = 0.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g3cm4"]
 radius = 0.2
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t5dj8"]
+streams_count = 2
+stream_0/stream = ExtResource("4_fa45v")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_8g7t1")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vky8o"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("6_q8lp0")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_yotku")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("8_644cn")
+stream_2/weight = 1.0
 
 [node name="Sonic" type="StaticBody3D"]
 collision_mask = 0
@@ -35,5 +57,6 @@ script = ExtResource("2_n66sq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213783, 0)
 shape = SubResource("SphereShape3D_g3cm4")
 
-[node name="Holdable" type="Node" parent="."]
-script = ExtResource("3_1qexs")
+[node name="Holdable" parent="." instance=ExtResource("3_w1kpf")]
+pick_up_audio_stream = SubResource("AudioStreamRandomizer_t5dj8")
+drop_audio_stream = SubResource("AudioStreamRandomizer_vky8o")
