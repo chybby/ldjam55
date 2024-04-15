@@ -13,6 +13,7 @@ signal next_dialogue
 @onready var speech_audio_player: AudioStreamPlayer = $SpeechAudioPlayer
 
 
+
 func _ready():
     profile_picture.material.set_shader_parameter("bob_speed", pp_bob_speed)
     profile_picture.material.set_shader_parameter("bob_amplitude", pp_bob_amplitude)

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d17qip0d82p5n" path="res://scenes/ui/hud.tscn" id="4_r0h2i"]
 [ext_resource type="PackedScene" uid="uid://hvk5n6w6tmr5" path="res://scenes/ui/end_game.tscn" id="6_b33jp"]
 [ext_resource type="AudioStream" uid="uid://cwrh36hx7lea1" path="res://assets/sounds/bgmusic.mp3" id="6_pqxox"]
-[ext_resource type="PackedScene" path="res://scenes/ui/settings.tscn" id="12_yt68s"]
+[ext_resource type="PackedScene" uid="uid://l660nwqrb5sp" path="res://scenes/ui/settings.tscn" id="12_yt68s"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_j2shs"]
 viewport_path = NodePath("WorldViewport")
