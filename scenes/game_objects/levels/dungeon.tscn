@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dionueqr7qrkx"]
+[gd_scene load_steps=38 format=3 uid="uid://dionueqr7qrkx"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/levels/dungeon.gd" id="1_urk0f"]
 [ext_resource type="PackedScene" uid="uid://cwav8ma78d78y" path="res://scenes/game_objects/player/player.tscn" id="2_t4pnu"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://colmfysd6u5ua" path="res://scenes/game_objects/ritual_book.tscn" id="15_rm16w"]
 [ext_resource type="PackedScene" uid="uid://c7rmxr1viqfp" path="res://scenes/game_objects/megaphone/megaphone.tscn" id="16_q33ok"]
 [ext_resource type="Shader" path="res://scenes/game_objects/torch/torch.gdshader" id="18_6nufd"]
+[ext_resource type="AudioStream" uid="uid://b7eidn2ovxp5i" path="res://assets/sounds/end.mp3" id="19_tvs5m"]
 
 [sub_resource type="Environment" id="Environment_t3h81"]
 background_color = Color(0.823529, 0.823529, 0.823529, 1)
@@ -537,3 +538,8 @@ amount = 1500
 lifetime = 5.0
 process_material = SubResource("ParticleProcessMaterial_we046")
 draw_pass_1 = SubResource("BoxMesh_w6g2d")
+
+[node name="EndAudioPlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.0892, 1.43444, -25.8709)
+stream = ExtResource("19_tvs5m")
+bus = &"SFX"
