@@ -1,8 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://dionueqr7qrkx"]
+[gd_scene load_steps=37 format=3 uid="uid://dionueqr7qrkx"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/levels/dungeon.gd" id="1_urk0f"]
 [ext_resource type="PackedScene" uid="uid://cwav8ma78d78y" path="res://scenes/game_objects/player/player.tscn" id="2_t4pnu"]
-[ext_resource type="PackedScene" uid="uid://cnwwqe77sy68w" path="res://assets/dungeon.blend" id="3_umc5k"]
+[ext_resource type="PackedScene" uid="uid://b2e504iqpfjf1" path="res://scenes/game_objects/levels/dungeon_model.tscn" id="3_6345u"]
 [ext_resource type="PackedScene" uid="uid://cmvtcc3g0xbgk" path="res://scenes/game_objects/beings/pyron/pyron.tscn" id="4_l3gmt"]
 [ext_resource type="PackedScene" uid="uid://y8bs8p8f47lu" path="res://scenes/game_objects/torch/torch.tscn" id="5_1kyur"]
 [ext_resource type="PackedScene" uid="uid://0mgktkmtad83" path="res://scenes/game_objects/beings/sonic/sonic.tscn" id="6_wl3h7"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://oxoulj6pucl7" path="res://scenes/game_objects/moving_platform/moving_platform.tscn" id="14_w0l5x"]
 [ext_resource type="PackedScene" uid="uid://colmfysd6u5ua" path="res://scenes/game_objects/ritual_book.tscn" id="15_rm16w"]
 [ext_resource type="PackedScene" uid="uid://c7rmxr1viqfp" path="res://scenes/game_objects/megaphone/megaphone.tscn" id="16_q33ok"]
+[ext_resource type="Shader" path="res://scenes/game_objects/torch/torch.gdshader" id="18_6nufd"]
 
 [sub_resource type="Environment" id="Environment_t3h81"]
 background_color = Color(0.823529, 0.823529, 0.823529, 1)
@@ -177,13 +178,44 @@ _data = {
 "time_tick": SubResource("Animation_gjucr")
 }
 
+[sub_resource type="Gradient" id="Gradient_2apa2"]
+offsets = PackedFloat32Array(0, 0.0777778, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.261964, 0.0135259, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ggogf"]
+gradient = SubResource("Gradient_2apa2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_we046"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 7.0
+emission_ring_inner_radius = 6.0
+gravity = Vector3(0, 10, 0)
+radial_accel_min = 2.0
+radial_accel_max = 2.0
+tangential_accel_min = 10.0
+tangential_accel_max = 20.0
+scale_min = 0.5
+scale_max = 3.0
+color_initial_ramp = SubResource("GradientTexture1D_ggogf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vesba"]
+render_priority = 0
+shader = ExtResource("18_6nufd")
+
+[sub_resource type="BoxMesh" id="BoxMesh_w6g2d"]
+material = SubResource("ShaderMaterial_vesba")
+size = Vector3(0.1, 0.1, 0.1)
+
 [node name="Dungeon" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.9109, 0.257031, 8.39661)
 script = ExtResource("1_urk0f")
 player_scene = ExtResource("2_t4pnu")
 
-[node name="Model" parent="." instance=ExtResource("3_umc5k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0022049, 0.0570709, 0.00124741)
+[node name="DungeonModel" parent="." instance=ExtResource("3_6345u")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 
 [node name="SpookyEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_t3h81")
@@ -392,7 +424,7 @@ rotation_mode = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.2507, 0.207253, 7.11598)
 
 [node name="DebugSpawn" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1316, 1.50973, -23.8418)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9254, 1.50973, -23.8418)
 
 [node name="MazeTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -455,6 +487,7 @@ unique_name_in_owner = true
 transform = Transform3D(3.53633e-08, 0.809017, 0.587785, 1, -4.37114e-08, 0, 2.56929e-08, 0.587785, -0.809017, 82.8837, 2.08084, -1.27666)
 
 [node name="RitualBook" parent="." instance=ExtResource("15_rm16w")]
+unique_name_in_owner = true
 transform = Transform3D(-0.4, 0, -3.49691e-08, 0, 0.4, 0, 3.49691e-08, 0, -0.4, 50.1739, 1.15747, -24.0003)
 
 [node name="MazeTimeTickAudioPlayer" type="AudioStreamPlayer" parent="."]
@@ -484,3 +517,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.4918, 2.17419, -20.7008)
 
 [node name="Megaphone" parent="." instance=ExtResource("16_q33ok")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.5559, 1.57627, -23.6811)
+
+[node name="SummoningLight" type="SpotLight3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 59.7831, 1.19788, -23.9379)
+visible = false
+light_color = Color(0.803922, 0, 0.184314, 1)
+light_energy = 16.0
+light_specular = 4.0
+shadow_enabled = true
+spot_range = 13.791
+spot_angle = 88.0
+
+[node name="SummoningParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.8013, -0.329157, -24.0531)
+emitting = false
+amount = 1500
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_we046")
+draw_pass_1 = SubResource("BoxMesh_w6g2d")

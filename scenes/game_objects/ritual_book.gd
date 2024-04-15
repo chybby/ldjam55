@@ -1,5 +1,7 @@
 extends Node3D
 
+signal final_boss_summoned
+
 
 @onready var interactable: Interactable = %Interactable
 
@@ -18,5 +20,4 @@ func on_ponder(held_item: Holdable) -> void:
 
 func on_interact(held_item: Holdable) -> void:
     if held_item != null and held_item.owner.name == "Megaphone":
-        # TODO: final summoning animation
-        GameEvents.emit_finished_game()
+        final_boss_summoned.emit()

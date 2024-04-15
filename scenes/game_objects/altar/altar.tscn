@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1t0jfr15uble"]
+[gd_scene load_steps=14 format=3 uid="uid://c1t0jfr15uble"]
 
 [ext_resource type="PackedScene" uid="uid://dtvwfrlyr3hns" path="res://assets/altar.blend" id="1_vc38n"]
 [ext_resource type="Script" path="res://scenes/game_objects/altar/altar.gd" id="1_xwqxa"]
@@ -6,9 +6,37 @@
 [ext_resource type="PackedScene" uid="uid://ug7cgai6nxv0" path="res://assets/bowl.blend" id="3_1jtgy"]
 [ext_resource type="PackedScene" uid="uid://lwctoxfgqxdd" path="res://scenes/game_objects/candle/candle.tscn" id="4_xh216"]
 [ext_resource type="PackedScene" uid="uid://c5nstwfej32oa" path="res://scenes/components/interactable/interactable.tscn" id="5_ggy7s"]
+[ext_resource type="Shader" path="res://scenes/game_objects/torch/torch.gdshader" id="7_fqy36"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5wds"]
 size = Vector3(0.650921, 0.114994, 0.653046)
+
+[sub_resource type="Gradient" id="Gradient_dbaiw"]
+offsets = PackedFloat32Array(0, 0.0777778, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.261964, 0.0135259, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_viy50"]
+gradient = SubResource("Gradient_dbaiw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i5tks"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.1
+emission_ring_radius = 0.4
+emission_ring_inner_radius = 0.4
+gravity = Vector3(0, 5, 0)
+tangential_accel_min = 2.0
+tangential_accel_max = 4.0
+scale_min = 0.2
+color_initial_ramp = SubResource("GradientTexture1D_viy50")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yl0k2"]
+render_priority = 0
+shader = ExtResource("7_fqy36")
+
+[sub_resource type="BoxMesh" id="BoxMesh_iqaty"]
+material = SubResource("ShaderMaterial_yl0k2")
+size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Altar" type="Node3D"]
 script = ExtResource("1_xwqxa")
@@ -40,3 +68,22 @@ transform = Transform3D(0.954376, 0, 0.298608, 0, 1, 0, -0.298608, 0, 0.954376, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
 transform = Transform3D(1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, 1, -0.00617743, 0.032999, 0.00727855)
 shape = SubResource("BoxShape3D_t5wds")
+
+[node name="SummoningParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00234401, 0.891535, 0.0128121)
+emitting = false
+amount = 600
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_i5tks")
+draw_pass_1 = SubResource("BoxMesh_iqaty")
+
+[node name="SummoningLight" type="SpotLight3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -2.98023e-08, -1, 0, 1, -2.98023e-08, 0, 1.0336, 0)
+visible = false
+light_color = Color(0.976471, 0.0117647, 0, 1)
+light_energy = 8.0
+light_specular = 4.0
+spot_range = 6.0
+spot_angle = 88.0
