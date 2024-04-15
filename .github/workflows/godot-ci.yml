@@ -34,6 +34,8 @@ jobs:
           tar -xf blender-3.6.0-linux-x64.tar.xz
           cd blender-3.6.0-linux-x64
           pwd | sed 's/^/filesystem\/import\/blender\/blender3_path = \"/;s/$/"/' >> ~/.local/share/godot/editor_settings-4.tres
+          cd ..
+          godot -v -e --quit --headless
       - name: Windows Build
         run: |
           mkdir -v -p export/windows
