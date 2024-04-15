@@ -54,7 +54,7 @@ unique_name_in_owner = true
 process_mode = 1
 visible = false
 layout_mode = 1
-dialogue_lines = Array[String](["Hello", "Testing 1 2 3", "Goodbye"])
+dialogue_lines = Array[String](["Hello? Is this thing on?", "No no no, don't bother looking around. I'm channelling my thoughts directly into your head from the exam invigilation chamber.", "It's a technique you may be able to learn next semester, assuming you are able to pass this summoning exam.", "There are five minor spirits you will need to summon today. Once they are all gathered in the central chamber you will be able to begin the final ritual.", "Each spirit bestows upon you magical powers while you are carrying them. Use these wisely to navigate the examination chambers.", "Oh, one more thing...", " I hope you aren't afraid of the dark. Heh heh heh ~"])
 
 [node name="EndGame" parent="GUI" instance=ExtResource("6_b33jp")]
 unique_name_in_owner = true
