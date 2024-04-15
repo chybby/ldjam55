@@ -39,7 +39,6 @@ jobs:
           mv /root/.config/godot/editor_settings-4.tres ~/.config/godot/editor_settings-4.tres
           pwd | sed 's/^/filesystem\/import\/blender\/blender3_path = \"/;s/$/"/' >> ~/.config/godot/editor_settings-4.tres
           cd ~
-          godot -v -e --quit --headless
       - name: Windows Build
         run: |
           mkdir -v -p export/windows

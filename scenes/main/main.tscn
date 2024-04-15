@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ef5dqqevmxcn"]
+[gd_scene load_steps=9 format=3 uid="uid://ef5dqqevmxcn"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_jcq7f"]
 [ext_resource type="PackedScene" uid="uid://dionueqr7qrkx" path="res://scenes/game_objects/levels/dungeon.tscn" id="2_igwo7"]
@@ -6,12 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://5iyupcfvbku4" path="res://scenes/ui/title.tscn" id="4_0h664"]
 [ext_resource type="PackedScene" uid="uid://d17qip0d82p5n" path="res://scenes/ui/hud.tscn" id="4_r0h2i"]
 [ext_resource type="PackedScene" uid="uid://hvk5n6w6tmr5" path="res://scenes/ui/end_game.tscn" id="6_b33jp"]
-[ext_resource type="AudioStream" uid="uid://chlbljeyphucn" path="res://assets/sounds/intro_placeholder1.mp3" id="6_dl5ka"]
-[ext_resource type="AudioStream" uid="uid://cwrh36hx7lea1" path="res://assets/sounds/bgmusic.mp3" id="6_pqxox"]
-[ext_resource type="AudioStream" uid="uid://c778h0t46pabf" path="res://assets/sounds/intro_placeholder2.mp3" id="7_agwbl"]
-[ext_resource type="AudioStream" uid="uid://pustjq1byvs5" path="res://assets/sounds/intro_placeholder3.mp3" id="8_002dn"]
-[ext_resource type="AudioStream" uid="uid://d14lhr4p83h7b" path="res://assets/sounds/intro_placeholder4.mp3" id="9_eitgx"]
-[ext_resource type="AudioStream" uid="uid://ycveqftaf6if" path="res://assets/sounds/intro_placeholder5.mp3" id="10_02g4p"]
+[ext_resource type="AudioStream" uid="uid://beys2in3mwfmj" path="res://assets/sounds/bgmusic.mp3" id="6_pqxox"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_j2shs"]
 viewport_path = NodePath("WorldViewport")
@@ -58,8 +53,6 @@ unique_name_in_owner = true
 process_mode = 3
 visible = false
 layout_mode = 1
-dialogue_lines = Array[String](["Welcome to your final examination at...", "S3: Spooky Summoning School", "In this you will be challenged to a series of tests...", "In those tests you must do things...", "Best of luck. Spookems McGee out."])
-dialogue_audios = Array[AudioStream]([ExtResource("6_dl5ka"), ExtResource("7_agwbl"), ExtResource("8_002dn"), ExtResource("9_eitgx"), ExtResource("10_02g4p")])
 
 [node name="EndGame" parent="GUI" instance=ExtResource("6_b33jp")]
 unique_name_in_owner = true

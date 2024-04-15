@@ -23,4 +23,4 @@ func on_finished_game() -> void:
     var minutes = seconds / 60
     seconds = posmod(seconds, 60)
 
-    game_time.text += "%s:%02s" % [minutes, seconds]
+    game_time.text += "%s:%02d" % [minutes, seconds]
