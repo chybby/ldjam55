@@ -22,6 +22,14 @@ jobs:
         uses: actions/checkout@v3
         with:
           lfs: true
+      - name: Install Blender
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends xz-utils
+          wget -nv https://mirrors.dotsrc.org/blender/release/Blender3.6/blender-3.6.0-linux-x64.tar.xz
+          tar -xf blender-3.6.0-linux-x64.tar.xz
+          cd blender-3.6.0-linux-x64
+          pwd | sed 's/^/filesystem\/import\/blender\/blender3_path = \"/;s/$/"/' >> ~/.config/godot/editor_settings-4.tres
       - name: Setup
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates
