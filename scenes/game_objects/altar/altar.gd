@@ -7,6 +7,7 @@ extends Node3D
 @onready var summoning_particles: GPUParticles3D = %SummoningParticles
 @onready var summoning_light: SpotLight3D = %SummoningLight
 
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 var summoning_started := false
 
@@ -31,6 +32,7 @@ func stop_summoning_effects() -> void:
 
 func on_interact(held_item: Holdable) -> void:
     summoning_started = true
+    audio_stream_player_3d.play()
     var being := being_scene.instantiate() as Node3D
 
     being_path_follow.add_child(being)

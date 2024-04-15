@@ -4,6 +4,7 @@ signal final_boss_summoned
 
 
 @onready var interactable: Interactable = %Interactable
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func _ready() -> void:
@@ -21,3 +22,5 @@ func on_ponder(held_item: Holdable) -> void:
 func on_interact(held_item: Holdable) -> void:
     if held_item != null and held_item.owner.name == "Megaphone":
         final_boss_summoned.emit()
+    else:
+        audio_stream_player.play()
