@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://5iyupcfvbku4"]
+[gd_scene load_steps=3 format=3 uid="uid://5iyupcfvbku4"]
 
 [ext_resource type="Script" path="res://scenes/ui/title.gd" id="1_ts0ig"]
+[ext_resource type="Texture2D" uid="uid://dgo0rsjlm6tu1" path="res://assets/title-text.png" id="2_xw8a1"]
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -28,11 +29,12 @@ theme_override_constants/margin_right = 200
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 200)
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(800, 800)
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "Spooky Game"
+texture = ExtResource("2_xw8a1")
+stretch_mode = 5
 
 [node name="Prompt" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
