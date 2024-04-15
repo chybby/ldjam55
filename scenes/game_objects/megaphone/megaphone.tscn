@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7rmxr1viqfp"]
+[gd_scene load_steps=8 format=3 uid="uid://c7rmxr1viqfp"]
 
 [ext_resource type="PackedScene" uid="uid://c5nstwfej32oa" path="res://scenes/components/interactable/interactable.tscn" id="1_mkjlj"]
 [ext_resource type="Script" path="res://scenes/game_objects/megaphone/megaphone.gd" id="1_nol1q"]
 [ext_resource type="PackedScene" uid="uid://bklu42pxrihc2" path="res://scenes/components/holdable/holdable.tscn" id="2_2p2xk"]
 [ext_resource type="PackedScene" uid="uid://dsajyr5660ryi" path="res://assets/megaphone.blend" id="2_kk1lc"]
+[ext_resource type="AudioStream" uid="uid://bcka348lgstdj" path="res://assets/sounds/loudspeaker.mp3" id="5_p0slo"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8jm5x"]
 radius = 0.216898
@@ -31,3 +32,4 @@ shape = SubResource("SphereShape3D_ay4x8")
 
 [node name="Holdable" parent="." instance=ExtResource("2_2p2xk")]
 unique_name_in_owner = true
+pick_up_audio_stream = ExtResource("5_p0slo")

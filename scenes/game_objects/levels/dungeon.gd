@@ -25,6 +25,7 @@ var small_room_puzzle_complete := false
 @onready var summoning_light: SpotLight3D = %SummoningLight
 @onready var summoning_particles: GPUParticles3D = %SummoningParticles
 
+@onready var end_audio_player: AudioStreamPlayer3D = $EndAudioPlayer
 
 func _ready() -> void:
     maze_timer.timeout.connect(on_maze_timer_timeout)
@@ -89,5 +90,6 @@ func on_final_boss_summoned() -> void:
     dungeon_model.start_summon()
     summoning_light.visible = true
     summoning_particles.emitting = true
-    await get_tree().create_timer(15).timeout
+    end_audio_player.play()
+    await get_tree().create_timer(end_audio_player.stream.get_length()-3.5).timeout
     GameEvents.emit_finished_game()
