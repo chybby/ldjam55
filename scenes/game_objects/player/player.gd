@@ -134,9 +134,12 @@ func pick_up(holdable: Holdable) -> void:
         held_item.drop()
 
     held_item = holdable
-    held_item.owner.reparent(held_item_marker)
-    held_item.owner.position = Vector3.ZERO
-    held_item.owner.set_collision_layer_value(1, false)
+    var held_item_owner := held_item.owner as StaticBody3D
+    held_item_owner.reparent(held_item_marker)
+    held_item_owner.position = Vector3.ZERO
+    held_item_owner.rotation = Vector3.ZERO
+    held_item_owner.rotate_object_local(Vector3.UP, -PI/4)
+    held_item_owner.set_collision_layer_value(1, false)
 
 
 func interact(interactable: Interactable) -> void:

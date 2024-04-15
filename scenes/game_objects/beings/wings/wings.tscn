@@ -1,18 +1,16 @@
 [gd_scene load_steps=9 format=3 uid="uid://dt43xo5h61ymm"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/beings/wings/wings.gd" id="1_2jclb"]
+[ext_resource type="PackedScene" uid="uid://cmrc56t8jjba1" path="res://assets/wings.blend" id="2_hk2gt"]
 [ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="2_lt8h8"]
 [ext_resource type="PackedScene" uid="uid://bklu42pxrihc2" path="res://scenes/components/holdable/holdable.tscn" id="3_cb3pg"]
 [ext_resource type="AudioStream" uid="uid://dd00xqi466kel" path="res://assets/sounds/wings_up1.mp3" id="4_qgsef"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_o13lc"]
-size = Vector3(0.4, 0.4, 0.4)
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_2fjdu"]
-radius = 0.2
+radius = 0.208316
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g3cm4"]
-radius = 0.2
+radius = 0.208316
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wcnen"]
 random_pitch = 1.1
@@ -20,13 +18,12 @@ streams_count = 1
 stream_0/stream = ExtResource("4_qgsef")
 stream_0/weight = 1.0
 
-[node name="Wings" type="StaticBody3D" groups=["being"]]
+[node name="Avia" type="StaticBody3D" groups=["being"]]
 collision_mask = 0
 script = ExtResource("1_2jclb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213436, 0)
-mesh = SubResource("PrismMesh_o13lc")
+[node name="Model" parent="." instance=ExtResource("2_hk2gt")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0.00278935, 0.0142816, 0.0887695)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213436, 0)

@@ -251,7 +251,7 @@ script = ExtResource("2_v2lg7")
 
 [node name="HeldItemMarker" type="Marker3D" parent="ScalePivot"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.324, 0.112001, -0.651)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.324, 0.197428, -0.708332)
 
 [node name="GlowingTrail" type="GPUParticles3D" parent="ScalePivot/HeldItemMarker"]
 unique_name_in_owner = true

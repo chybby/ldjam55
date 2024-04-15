@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c5nstwfej32oa" path="res://scenes/components/interactable/interactable.tscn" id="5_ggy7s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5wds"]
-size = Vector3(0.558289, 0.0605621, 0.510986)
+size = Vector3(0.650921, 0.114994, 0.653046)
 
 [node name="Altar" type="Node3D"]
 script = ExtResource("1_xwqxa")
@@ -38,5 +38,5 @@ unique_name_in_owner = true
 transform = Transform3D(0.954376, 0, 0.298608, 0, 1, 0, -0.298608, 0, 0.954376, -0.776423, 1.01018, 0.259726)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000457883, 0.025795, -0.0176999)
+transform = Transform3D(1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, 1, -0.00617743, 0.032999, 0.00727855)
 shape = SubResource("BoxShape3D_t5wds")

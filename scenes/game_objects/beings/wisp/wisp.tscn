@@ -2,27 +2,22 @@
 
 [ext_resource type="Script" path="res://scenes/game_objects/beings/wisp/wisp.gd" id="1_bufnr"]
 [ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="2_c3ygl"]
+[ext_resource type="PackedScene" uid="uid://cl8gjgfjtrnla" path="res://assets/wisp.blend" id="2_ce5dg"]
 [ext_resource type="PackedScene" uid="uid://bklu42pxrihc2" path="res://scenes/components/holdable/holdable.tscn" id="3_fhpp0"]
 [ext_resource type="AudioStream" uid="uid://ch1tybm71n11u" path="res://assets/sounds/wisp_up.mp3" id="4_mget7"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_8vyft"]
-top_radius = 0.11
-bottom_radius = 0.2
-height = 0.4
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_2fjdu"]
-radius = 0.2
+radius = 0.199465
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g3cm4"]
-radius = 0.2
+radius = 0.231093
 
-[node name="Wisp" type="StaticBody3D" groups=["being"]]
+[node name="Spiravit" type="StaticBody3D" groups=["being"]]
 collision_mask = 0
 script = ExtResource("1_bufnr")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.207763, 0)
-mesh = SubResource("CylinderMesh_8vyft")
+[node name="Model" parent="." instance=ExtResource("2_ce5dg")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.0111629, -0.0334888, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213436, 0)
@@ -34,13 +29,14 @@ collision_mask = 0
 script = ExtResource("2_c3ygl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213783, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0409307, 0.237969, 0)
 shape = SubResource("SphereShape3D_g3cm4")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.179755, 0)
 light_color = Color(0, 0.796078, 0.847059, 1)
 light_energy = 1.5
+light_size = 0.3
 shadow_enabled = true
 omni_range = 4.0
 omni_attenuation = 1.27455

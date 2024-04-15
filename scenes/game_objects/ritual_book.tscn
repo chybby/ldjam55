@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c5nstwfej32oa" path="res://scenes/components/interactable/interactable.tscn" id="2_l6d0u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tqeuf"]
-size = Vector3(2.04565, 0.210022, 2.23108)
+size = Vector3(2.53915, 0.42524, 2.462)
 
 [node name="RitualBook" type="Node3D"]
 script = ExtResource("1_ws1q3")
@@ -16,5 +16,5 @@ script = ExtResource("1_ws1q3")
 unique_name_in_owner = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0413818, 0.114655, -0.00335693)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0829904, 0.1768, -0.00588631)
 shape = SubResource("BoxShape3D_tqeuf")

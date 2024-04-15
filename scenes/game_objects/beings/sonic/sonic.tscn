@@ -2,19 +2,16 @@
 
 [ext_resource type="Script" path="res://scenes/game_objects/beings/sonic/sonic.gd" id="1_iymto"]
 [ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="2_n66sq"]
+[ext_resource type="PackedScene" uid="uid://cfv5rlhck3753" path="res://assets/sonic.blend" id="2_uvtd1"]
 [ext_resource type="PackedScene" uid="uid://bklu42pxrihc2" path="res://scenes/components/holdable/holdable.tscn" id="3_6oqj2"]
 [ext_resource type="AudioStream" uid="uid://cu6v3i23lyere" path="res://assets/sounds/sonic_up1.mp3" id="5_qdej1"]
 [ext_resource type="AudioStream" uid="uid://dxs8behvnkpef" path="res://assets/sounds/sonic_up2.mp3" id="6_xl564"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_du4xi"]
-radius = 0.2
-height = 0.4
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_2fjdu"]
-radius = 0.2
+radius = 0.199073
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g3cm4"]
-radius = 0.2
+radius = 0.210236
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_57qdq"]
 random_pitch = 1.1
@@ -24,13 +21,12 @@ stream_0/weight = 1.0
 stream_1/stream = ExtResource("6_xl564")
 stream_1/weight = 1.0
 
-[node name="Sonic" type="StaticBody3D" groups=["being"]]
+[node name="Celerias" type="StaticBody3D" groups=["being"]]
 collision_mask = 0
 script = ExtResource("1_iymto")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213436, 0)
-mesh = SubResource("SphereMesh_du4xi")
+[node name="Model" parent="." instance=ExtResource("2_uvtd1")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.0396976, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213436, 0)

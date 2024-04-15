@@ -2,29 +2,25 @@
 
 [ext_resource type="Script" path="res://scenes/game_objects/beings/nano/nano.gd" id="1_fse7i"]
 [ext_resource type="Script" path="res://scenes/components/interactable/interactable.gd" id="2_5al7x"]
+[ext_resource type="PackedScene" uid="uid://dc2a1ma4efsp7" path="res://assets/nano.blend" id="2_eec0x"]
 [ext_resource type="PackedScene" uid="uid://bklu42pxrihc2" path="res://scenes/components/holdable/holdable.tscn" id="3_8jwgo"]
 [ext_resource type="AudioStream" uid="uid://bg0mtecqt50ji" path="res://assets/sounds/nano_pickup.mp3" id="4_tk6cf"]
 
-[sub_resource type="TorusMesh" id="TorusMesh_tpsdg"]
-inner_radius = 0.081
-outer_radius = 0.196
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_2fjdu"]
-radius = 0.2
+radius = 0.193491
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g3cm4"]
-radius = 0.2
+radius = 0.215767
 
-[node name="Nano" type="StaticBody3D" groups=["being"]]
+[node name="Mollaro" type="StaticBody3D" groups=["being"]]
 collision_mask = 0
 script = ExtResource("1_fse7i")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0617142, 0)
-mesh = SubResource("TorusMesh_tpsdg")
+[node name="Model" parent="." instance=ExtResource("2_eec0x")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213436, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.197022, -0.032828)
 shape = SubResource("SphereShape3D_2fjdu")
 
 [node name="Interactable" type="Area3D" parent="."]
@@ -33,7 +29,7 @@ collision_mask = 0
 script = ExtResource("2_5al7x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213783, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0128967, 0.207921, -0.0187588)
 shape = SubResource("SphereShape3D_g3cm4")
 
 [node name="Holdable" parent="." instance=ExtResource("3_8jwgo")]

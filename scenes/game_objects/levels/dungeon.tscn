@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dldol1ja4gcyr" path="res://scenes/game_objects/pusher/pusher.tscn" id="13_8hlw0"]
 [ext_resource type="AudioStream" uid="uid://bi50c01omt0x4" path="res://assets/sounds/time_tick.mp3" id="13_xo621"]
 [ext_resource type="PackedScene" uid="uid://oxoulj6pucl7" path="res://scenes/game_objects/moving_platform/moving_platform.tscn" id="14_w0l5x"]
-[ext_resource type="PackedScene" path="res://scenes/game_objects/ritual_book.tscn" id="15_rm16w"]
+[ext_resource type="PackedScene" uid="uid://colmfysd6u5ua" path="res://scenes/game_objects/ritual_book.tscn" id="15_rm16w"]
 [ext_resource type="PackedScene" uid="uid://c7rmxr1viqfp" path="res://scenes/game_objects/megaphone/megaphone.tscn" id="16_q33ok"]
 
 [sub_resource type="Environment" id="Environment_t3h81"]
@@ -392,7 +392,7 @@ rotation_mode = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.2507, 0.207253, 7.11598)
 
 [node name="DebugSpawn" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.9664, 0.416029, -4.36017)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1316, 1.50973, -23.8418)
 
 [node name="MazeTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -466,3 +466,21 @@ bus = &"SFX_dry"
 libraries = {
 "": SubResource("AnimationLibrary_gi764")
 }
+
+[node name="Nano" parent="." instance=ExtResource("8_im0wl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.9923, 2.17418, -18.543)
+
+[node name="Pyron" parent="." instance=ExtResource("4_l3gmt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 53.9487, 2.17418, -23.9866)
+
+[node name="Sonic" parent="." instance=ExtResource("6_wl3h7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.0412, 2.17419, -29.4949)
+
+[node name="Wings" parent="." instance=ExtResource("7_ew4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.5051, 2.17418, -27.5435)
+
+[node name="Wisp" parent="." instance=ExtResource("9_gg1ej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.4918, 2.17419, -20.7008)
+
+[node name="Megaphone" parent="." instance=ExtResource("16_q33ok")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.5559, 1.57627, -23.6811)
