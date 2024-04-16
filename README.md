@@ -15,8 +15,6 @@ How to play:
 - `Space` to jump.
 - `Esc` to pause.
 
-Credits/sources
-
 Made for [Ludum Dare 55](https://ldjam.com/events/ludum-dare/55/final-chants) by Dome and Jelly.
 
 Made in Godot. All art, models and audio were made from scratch during the jam.
