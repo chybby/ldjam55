@@ -8,4 +8,7 @@ func _ready() -> void:
 
 
 func update_prompt(prompt: String) -> void:
-    prompt_label.text = prompt
+    if prompt == null or prompt == "":
+        prompt_label.text = ""
+        return
+    prompt_label.text = "E: " + prompt

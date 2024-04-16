@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/game_objects/levels/dungeon.gd" id="1_urk0f"]
 [ext_resource type="PackedScene" uid="uid://cwav8ma78d78y" path="res://scenes/game_objects/player/player.tscn" id="2_t4pnu"]
-[ext_resource type="PackedScene" path="res://scenes/game_objects/levels/dungeon_model.tscn" id="3_6345u"]
+[ext_resource type="PackedScene" uid="uid://b2e504iqpfjf1" path="res://scenes/game_objects/levels/dungeon_model.tscn" id="3_6345u"]
 [ext_resource type="PackedScene" uid="uid://cmvtcc3g0xbgk" path="res://scenes/game_objects/beings/pyron/pyron.tscn" id="4_l3gmt"]
 [ext_resource type="PackedScene" uid="uid://y8bs8p8f47lu" path="res://scenes/game_objects/torch/torch.tscn" id="5_1kyur"]
 [ext_resource type="PackedScene" uid="uid://0mgktkmtad83" path="res://scenes/game_objects/beings/sonic/sonic.tscn" id="6_wl3h7"]
@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://colmfysd6u5ua" path="res://scenes/game_objects/ritual_book.tscn" id="15_rm16w"]
 [ext_resource type="PackedScene" uid="uid://c7rmxr1viqfp" path="res://scenes/game_objects/megaphone/megaphone.tscn" id="16_q33ok"]
 [ext_resource type="Shader" path="res://scenes/game_objects/torch/torch.gdshader" id="18_6nufd"]
-[ext_resource type="AudioStream" uid="uid://b7eidn2ovxp5i" path="res://assets/sounds/end.mp3" id="19_tvs5m"]
+[ext_resource type="AudioStream" uid="uid://dkxcfl5m7ap0l" path="res://assets/sounds/end.mp3" id="19_tvs5m"]
 
 [sub_resource type="Environment" id="Environment_t3h81"]
 background_color = Color(0.823529, 0.823529, 0.823529, 1)
@@ -425,7 +425,7 @@ rotation_mode = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.2507, 0.207253, 7.11598)
 
 [node name="DebugSpawn" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.1726, 1.50973, -38.0816)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.1699, 9.39659, 6.04465)
 
 [node name="MazeTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -500,24 +500,6 @@ bus = &"SFX_dry"
 libraries = {
 "": SubResource("AnimationLibrary_gi764")
 }
-
-[node name="Nano" parent="." instance=ExtResource("8_im0wl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.9923, 2.17418, -18.543)
-
-[node name="Pyron" parent="." instance=ExtResource("4_l3gmt")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 53.9487, 2.17418, -23.9866)
-
-[node name="Sonic" parent="." instance=ExtResource("6_wl3h7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.0412, 2.17419, -29.4949)
-
-[node name="Wings" parent="." instance=ExtResource("7_ew4e8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.5051, 2.17418, -27.5435)
-
-[node name="Wisp" parent="." instance=ExtResource("9_gg1ej")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.4918, 2.17419, -20.7008)
-
-[node name="Megaphone" parent="." instance=ExtResource("16_q33ok")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.5559, 1.57627, -23.6811)
 
 [node name="SummoningLight" type="SpotLight3D" parent="."]
 unique_name_in_owner = true

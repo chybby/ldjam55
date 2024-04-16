@@ -40,7 +40,8 @@ func on_interact(held_item: Holdable) -> void:
     if being.has_method("set_home"):
         being.set_home(being_path_follow)
 
-    being.rotate_object_local(Vector3.UP, PI)
+    if being.name != "Avia":
+        being.rotate_object_local(Vector3.UP, PI)
     being.position.y -= 1
 
     summoning_light.visible = true

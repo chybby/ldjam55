@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://c0nh368oirmoj" path="res://assets/sounds/intro5.mp3" id="10_rc2dr"]
 [ext_resource type="AudioStream" uid="uid://cfvkq88l6332" path="res://assets/sounds/intro6.mp3" id="11_d4mwd"]
 [ext_resource type="AudioStream" uid="uid://bwddyjew1s12b" path="res://assets/sounds/intro7.mp3" id="12_w1p8o"]
-[ext_resource type="PackedScene" uid="uid://l660nwqrb5sp" path="res://scenes/ui/settings.tscn" id="12_yt68s"]
+[ext_resource type="PackedScene" uid="uid://buj3406k4nxrg" path="res://scenes/ui/settings.tscn" id="12_yt68s"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_j2shs"]
 viewport_path = NodePath("WorldViewport")

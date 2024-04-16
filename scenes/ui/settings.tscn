@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://l660nwqrb5sp"]
+[gd_scene load_steps=11 format=3 uid="uid://buj3406k4nxrg"]
 
 [ext_resource type="Script" path="res://scenes/main/Settings.gd" id="1_wug6m"]
 [ext_resource type="Shader" path="res://scenes/ui/wavy_text.gdshader" id="3_pqdbp"]
