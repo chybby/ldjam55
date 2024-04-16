@@ -164,4 +164,5 @@ libraries = {
 }
 
 [node name="SpeechAudioPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 8.0
 bus = &"SFX_dry"
